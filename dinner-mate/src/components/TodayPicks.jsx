@@ -23,12 +23,12 @@ const TodayPicks = () => {
             <Wrapper>
                 <h3>Today's Picks</h3>
                 <Splide options={{
-                    perPage: 4,
+                    perPage: 3,
                     arrows: true,
                     pagination: false,
                     gap: "5rem",
                 }}>
-                {trending.map((recipe) => {
+                {todayspicks.map((recipe) => {
                     return (
                         <SplideSlide>
                             <Card>
@@ -89,7 +89,7 @@ const Gradient = styled.div`
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)
-`
+`;
 
 
 export default TodayPicks

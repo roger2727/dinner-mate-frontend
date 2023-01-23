@@ -6,3 +6,13 @@
     box-sizing: border-box;
     font-family: 'Moteserrat', sans-serif;
 }
+
+body {
+    margin: 0% 20%
+}
+
+h4 {
+    font-size: 1rem;
+    color: rgb(56, 56, 56)
+}
+
