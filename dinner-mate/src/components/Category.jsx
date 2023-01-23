@@ -1,13 +1,14 @@
 import React from 'react'
-import { MdOutlineFreeBreal, MdOutlineLunchDin } from "react-icons/md"
+import { AiOutlineCoffee} from "react-icons/ai"
 import { GiChopsticks } from "react-icons/gi"
 import { BiCake } from "react-icons/bi"
+import { Navlink } from "react-router-dom"
 
 const Category = () => {
     return (
         <List>
             <Navlink>
-                <MdOutlineFreeBreal />
+                <AiOutlineCoffee />
                 <h4>Breakfast</h4>
             </Navlink>
             <Navlink>
