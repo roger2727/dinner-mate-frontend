@@ -22,11 +22,14 @@ const SearchedRecipe = () => {
     
     return (
         <Grid>
-            {searchedRecipe.map(item) => {
+            {searchedRecipe.map((item) => {
                 return (
-                    (Card) =>)
+                    <Card key={item.id}>
+                        <img src={item.image} al="" />
+                        <h4>{item.title}</h4>
+                    </Card>
                 )
-            }}
+            })}
         </Grid>
     )
 }
