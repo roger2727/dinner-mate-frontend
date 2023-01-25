@@ -1,18 +1,16 @@
-import TodayPicks from "../components/TodayPicks"
-import Trending from "../components/Trending"
-import Category from "../components/Category"
+import TodayPicks from "../components/TodayPicks";
+import Trending from "../components/Trending";
 
-
-import React from 'react'
+import React from "react";
 
 function Home() {
-    return (
-        <>
-            <Category />
-            <TodayPicks />
-            <Trending />
-        </>
-    )
+  return (
+    <>
+      <Category />
+      <TodayPicks />
+      <Trending />
+    </>
+  );
 }
 
-export default Home
+export default Home;
