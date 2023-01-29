@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineCoffee } from "react-icons/ai";
 import { GiChopsticks } from "react-icons/gi";
 import { BiCake } from "react-icons/bi";
-// import { Navlink } from "react-router-dom"
+import { Navlink } from "react-router-dom";
 
 const Category = () => {
   return (
