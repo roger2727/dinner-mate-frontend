@@ -8,6 +8,7 @@ const Pages = () => {
 
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/searched/:search" element={<Search />} />
             </Routes>
 
         </>
