@@ -1,31 +1,31 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
 import { motion } from "framer-motion"
 import { Link, useParams } from "react-router-dom"
 
 
-const SearchedRecipe = () => {
+const mealTime = () => {
 
-    const [searchedRecipe, setSearchedRecipe] = useState([])
+    const [mealTime, setMealTime] = useState([])
     let params = useParams()
 
 
-    const getSearchedRecipe = async (name) => {
+    const getMealTime = async (name) => {
         const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&cuisine=${name}`)
         const recipes = await data.json()
-        setSearchedRecipe(recipes.results)
+        setMealTime(recipes.results)
     }
 
     useEffect(() => {
-        getSearchedRecipe(params.type)
+        getMealTime(params.type)
     })
     
     return (
         <Grid>
-            {searchedRecipe.map((item) => {
+            {mealTime.map((item) => {
                 return (
                     <Card key={item.id}>
-                        <img src={item.image} al="" />
+                        <img src={item.image} alt="" />
                         <h4>{item.title}</h4>
                     </Card>
                 )
@@ -57,4 +57,4 @@ const Card = styled.div`
         padding: 1rem;
     }
 `;
-export default SearchedRecipe
+export default mealTime

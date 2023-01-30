@@ -2,7 +2,9 @@ import React from 'react'
 import { AiOutlineCoffee} from "react-icons/ai"
 import { GiChopsticks } from "react-icons/gi"
 import { BiCake } from "react-icons/bi"
-import { Navlink } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
+import { CiPizza } from 'react-icons/ci'
+import styled from 'styled-components'
 
 const Category = () => {
     return (
@@ -12,7 +14,7 @@ const Category = () => {
                 <h4>Breakfast</h4>
             </Slink>
             <Slink>
-                <MdOutlineLunchDin />
+                <CiPizza />
                 <h4>Lunch</h4>
             </Slink> 
             <Slink>
@@ -33,7 +35,7 @@ const List = styled.div`
     margin: 2rem 0rem;
 `;
 
-const Slink = styled(Navlink)`
+const Slink = styled(NavLink)`
     display: flex;
     flex-direction: column;
     justify-content: center;

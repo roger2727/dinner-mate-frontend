@@ -1,16 +1,15 @@
 import React from 'react'
 import Home from './Home'
-import { Route, Routes, BrowserRouter } from "react-router-dom"
+import mealTime from './MealTime'
+import { Route, Routes } from "react-router-dom"
 
 const Pages = () => {
     return (
         <>
-
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/searched/:search" element={<Search />} />
+                <Route path="/MealTime" element={<mealTime />} />
             </Routes>
-
         </>
 
     )

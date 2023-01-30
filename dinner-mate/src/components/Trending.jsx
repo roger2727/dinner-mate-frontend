@@ -15,7 +15,7 @@ const Trending = () => {
 
 
     const getTrending = async () => {
-        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&number=9`)
+        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=3de3f02471d649daa170cd106fa968f0&number=9`)
         const data = await api.json()
         setTrending(data.recipes) 
     }
@@ -25,9 +25,9 @@ const Trending = () => {
                 <h3>Trending</h3>
                 <Splide options={{
                     perPage: 4,
-                    arrows: true,
+                    arrows: false,
                     pagination: false,
-                    gap: "5rem",
+                    gap: '2rem', 
                 }}>
                 {trending.map((recipe) => {
                     return (
@@ -37,7 +37,7 @@ const Trending = () => {
                                 <img src={recipe.image} alt={recipe.title} />
                                 <Gradient />
                             </Card>
-                        </SplideSlide>                              
+                        </SplideSlide>                       
                     )
                 })}                            
                 </Splide>
@@ -51,21 +51,19 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-    min-height: 25rem;
+    min-height: 100%;
     border-radius: 2rem;
     overflow: hidden;
     position: relative;
-
+    
     img {
         border-radius: 2rem;
         postion: absolute;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        
+        object-fit: cover;  
     }
-
     p {
         position: absolute;
         z-index: 10;
@@ -80,7 +78,7 @@ const Card = styled.div`
         height: 40%;
         display: flex;
         justify-content: center;
-
+        align-items: center;
     }
 `;
 
@@ -89,7 +87,7 @@ const Gradient = styled.div`
     postion: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5)
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
 `;
 
 export default Trending 
