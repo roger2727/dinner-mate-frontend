@@ -16,7 +16,7 @@ const Searched = () => {
 
     useEffect (() => {
         getSearched(params.searched)
-    }, [])
+    }, [params.searched])
 
     return (
         <Grid>
