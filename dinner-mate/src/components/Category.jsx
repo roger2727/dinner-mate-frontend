@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { AiOutlineCoffee} from "react-icons/ai"
 import { GiChopsticks } from "react-icons/gi"
@@ -29,11 +30,13 @@ const Category = () => {
     )
 }
 
+
 const List = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0rem;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0rem;
 `;
+
 
 const Slink = styled(NavLink)`
     display: flex;
@@ -53,22 +56,23 @@ const Slink = styled(NavLink)`
         color: white;
         font-size: 0.8rem;
 
-    }
+
+  svg {
+    color: white;
+    font-size: 1.5rem;
+  }
+  &.active {
+    background: linear-gradient(to right, #f27121, #e94057);
+
     svg {
         color: white;
         font-size: 1.8rem;
-    }
-    &.active {
-        background: linear-gradient(to right, #f27121, #e94057);
 
-        svg {
-            color: white;
-        }
-        h4 {
-            color: white;
-        }
     }
+    h4 {
+      color: white;
+    }
+  }
 `;
 
-
-export default Category
+export default Category;

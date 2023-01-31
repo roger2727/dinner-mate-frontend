@@ -1,12 +1,14 @@
+
 import TodayPicks from "../components/TodayPicks"
 import Trending from "../components/Trending"
 import Category from "../components/Category"
 import Search from "../components/Search"
 
 
-import React from 'react'
+import React from "react";
 
 function Home() {
+
     return (
         <>
             <Search />
@@ -15,6 +17,7 @@ function Home() {
             <Trending />
         </>
     )
+
 }
 
-export default Home
+export default Home;
