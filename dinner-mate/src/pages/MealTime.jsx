@@ -25,8 +25,10 @@ const mealTime = () => {
             {mealTime.map((item) => {
                 return (
                     <Card key={item.id}>
-                        <img src={item.image} alt="" />
-                        <h4>{item.title}</h4>
+                        <Link to={'/recipies/'+item.id}>
+                            <img src={item.image} alt="" />
+                            <h4>{item.title}</h4>
+                        </Link>
                     </Card>
                 )
             })}
