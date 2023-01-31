@@ -9,19 +9,19 @@ import styled from 'styled-components'
 const Category = () => {
     return (
         <List>
-            <Slink>
+            <Slink to={"/mealTime/Italian"}>
                 <AiOutlineCoffee />
                 <h4>Breakfast</h4>
             </Slink>
-            <Slink>
+            <Slink to={"mealTime/American"}>
                 <CiPizza />
                 <h4>Lunch</h4>
             </Slink> 
-            <Slink>
+            <Slink to={"mealTime/Thai"}>
                 <GiChopsticks />
                 <h4>Dinner</h4>
             </Slink> 
-            <Slink>
+            <Slink to={"mealTime/Japanese"}>
                 <BiCake />
                 <h4>Desert</h4>
             </Slink> 
@@ -51,12 +51,12 @@ const Slink = styled(NavLink)`
 
     h4 {
         color: white;
-        font-size: 8rem;
+        font-size: 0.8rem;
 
     }
     svg {
         color: white;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
     &.active {
         background: linear-gradient(to right, #f27121, #e94057);

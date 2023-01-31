@@ -1,6 +1,6 @@
 import React from 'react'
 import Home from './Home'
-import mealTime from './MealTime'
+import MealTime from './MealTime'
 import { Route, Routes } from "react-router-dom"
 
 const Pages = () => {
@@ -8,7 +8,7 @@ const Pages = () => {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/MealTime" element={<mealTime />} />
+                <Route path="/mealTime/:type" element={<MealTime />} />
             </Routes>
         </>
 

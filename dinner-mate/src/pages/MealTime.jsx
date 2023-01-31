@@ -11,14 +11,14 @@ const mealTime = () => {
 
 
     const getMealTime = async (name) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&cuisine=${name}`)
+        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=3de3f02471d649daa170cd106fa968f0&cuisine=${name}`)
         const recipes = await data.json()
         setMealTime(recipes.results)
     }
 
     useEffect(() => {
         getMealTime(params.type)
-    })
+    },[params.type])
     
     return (
         <Grid>
