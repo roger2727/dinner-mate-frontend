@@ -33,7 +33,7 @@ const TodayPicks = () => {
                     return (
                         <SplideSlide>
                             <Card>
-                                <Link to={'/recipes/'+ recipe.id}>
+                                <Link to={'/recipe/'+ recipe.id}>
                                     <p>{recipe.title}</p>
                                     <img src={recipe.image} alt={recipe.title} />
                                     <Gradient />

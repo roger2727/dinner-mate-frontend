@@ -9,6 +9,7 @@ import Search from './components/Search'
 function App() {
     return(
         <BrowserRouter>
+            <Navbar />
             <Search />
             <Category />
             <Pages />
