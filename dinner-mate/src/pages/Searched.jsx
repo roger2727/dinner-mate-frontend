@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
+
 const Searched = () => {
 
     const [searched, setSearched] = useState([])
     let params = useParams()
 
     const getSearched = async (name) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&query=${name}`)
+        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=3de3f02471d649daa170cd106fa968f0&query=${name}`)
         const recipes = await data.json()
-        setSearched(recipes.result)
+        setSearched(recipes.results)
 
     }
 
     useEffect (() => {
-        getSearched(params.searched)
-    }, [params.searched])
+        getSearched(params.search)
+    }, [params.search])
 
     return (
         <Grid>

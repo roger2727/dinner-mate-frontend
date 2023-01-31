@@ -6,10 +6,11 @@ import styled from 'styled-components'
 
 const Search = () => {
     const [input, setInput] = useState('')
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const submitHandler = (e) => {
         e.preventDefault()
+        navigate('/searched/' + input)
     }
 
     return (
@@ -29,6 +30,7 @@ const FormStyle = styled.form`
     postion: relative;
     width: 100%;
 
+
     div {
         width: 100%;
         position: relative;
@@ -42,6 +44,7 @@ const FormStyle = styled.form`
         border: none;
         border-radius: 1rem;
         outline: none; 
+        width: 100%;
     }
     svg {
         postion: absolute;
@@ -49,6 +52,7 @@ const FormStyle = styled.form`
         left: 0%;
         transform: translate(100%, -50%);
         color: white; 
+        z-index: 10;
     }
 
 `
