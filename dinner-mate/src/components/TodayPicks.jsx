@@ -15,7 +15,7 @@ const TodayPicks = () => {
 
 
     const getTodaysPicks = async () => {
-        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=3de3f02471d649daa170cd106fa968f0&number=9`)
+        const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&number=9`)
         const data = await api.json()
         setTodayspicks(data.recipes) 
     }

@@ -4,6 +4,7 @@ import MealTime from './MealTime'
 import { Route, Routes } from "react-router-dom"
 import Searched from './Searched'
 import Recipe from './Recipe'
+import Login from '../components/Login'
 
 const Pages = () => {
     return (
@@ -13,6 +14,7 @@ const Pages = () => {
                 <Route path="/mealTime/:type" element={<MealTime />} />
                 <Route path="/searched/:search" element={<Searched />} />
                 <Route path="/recipe/:name" element={<Recipe />} />
+                <Route path="/Login" element={<Login />} />
             </Routes>
         </>
 
