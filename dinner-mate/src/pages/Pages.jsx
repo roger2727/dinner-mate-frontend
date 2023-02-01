@@ -5,6 +5,7 @@ import { Route, Routes } from "react-router-dom"
 import Searched from './Searched'
 import Recipe from './Recipe'
 import Login from '../components/Login'
+import SignUp from '../components/SignUp'
 
 const Pages = () => {
     return (
@@ -14,7 +15,8 @@ const Pages = () => {
                 <Route path="/mealTime/:type" element={<MealTime />} />
                 <Route path="/searched/:search" element={<Searched />} />
                 <Route path="/recipe/:name" element={<Recipe />} />
-                <Route path="/Login" element={<Login />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
             </Routes>
         </>
 
