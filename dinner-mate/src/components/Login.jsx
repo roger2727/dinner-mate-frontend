@@ -101,6 +101,7 @@ const StyledLogin = styled.button`
 
 const SignUp = styled.h4`
     cursor: pointer;
-`
+    color: white;
+`;
 
 export default Login
