@@ -1,18 +1,41 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const submit = (e) => {
-        e.preventdefault();
-    }
+
+    const navigate = useNavigate();
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+        try {
+            const newUser = { email, username, password };
+            await fetch(
+            //url,
+            {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newUser),
+            }
+            );
+            navigate("/login");
+        } 
+        catch (err) {
+            console.error(err);
+        }
+    };
+  
+
 
     return (
-        <MainContainer onSubmit={submit}>
+        <MainContainer onSubmit={onSubmit}>
             <SignUpText>
                 Sign Up
             </SignUpText>
@@ -45,6 +68,10 @@ const SignUp = () => {
 }
 
 const MainContainer = styled.form`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     left-margin: auto;
     right-margin: auto;

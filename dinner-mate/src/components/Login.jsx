@@ -1,22 +1,49 @@
 import React from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const submit = (e) => {
-        e.preventdefault();
+    const navigate = useNavigate();
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+      try {
+            const { username, password } = formData;
+            const response = await fetch(
+            //add url to backend,
+            {
+                method: "POST",
+                headers: {
+                "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ username, password }),
+            }
+            )
+            const data = await response.json();
+    
+            if (data.token) {
+            localStorage.setItem("token", data.token);
+            navigate('/user');
+            } 
+            else {
+            console.error("Invalid email or password");
+            }
+        } 
+        catch (err) {
+            console.error(err);
+        }
     }
 
     return (
-        <MainContainer onSubmit={submit}>
+        <MainContainer onSubmit={onSubmit}>
             <LoginText>
                 Log In
             </LoginText>
             <InputContainer>
-                {/* <form onSubmit={submit}> */}
                     <StyledInput
                         type= "text"
                         placeholder="Username"
@@ -29,7 +56,6 @@ const Login = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                {/* </form> */}
             </InputContainer>
             <ButtonContainer>
                 <StyledLogin type="submit">Login</StyledLogin>    
@@ -41,6 +67,10 @@ const Login = () => {
 }
 
 const MainContainer = styled.form`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     left-margin: auto;
     right-margin: auto;
