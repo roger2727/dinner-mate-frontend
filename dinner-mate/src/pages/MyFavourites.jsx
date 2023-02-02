@@ -12,7 +12,7 @@ const MyFavourites = () => {
     const getMyFavourites = async (name) => {
     const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&cuisine=${name}`)
     const myfavourites = await data.json()
-    setMyFavourites(myrecipes.results)
+    setMyFavourites(myfavourites.results)
 
     useEffect(() => {
         getMyFavourites(params.type)
