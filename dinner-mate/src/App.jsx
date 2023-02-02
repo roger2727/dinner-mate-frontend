@@ -7,14 +7,14 @@ import Search from "./components/Search";
 import Navbar from "./components/Navbar";
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Search />
-      <Category />
-      <Pages />
-    </BrowserRouter>
-  );
-}
+    return (
+        <BrowserRouter>
+        <Navbar />
+        <Search />
+        <Category />
+        <Pages />
+        </BrowserRouter>
+    );
+    }
 
 export default App;

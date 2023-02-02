@@ -52,6 +52,12 @@ const Slink = styled(NavLink)`
     cursor: pointer;
     transform: scale(0.8);
 
+
+    &:hover {
+      background: linear-gradient(to right, #f27121, #e94057);
+      transition: 2s ease-in-out 1s;
+    }
+
     h4 {
         color: white;
         font-size: 0.8rem;
