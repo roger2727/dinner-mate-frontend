@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from "styled-components"
 import { Link, useParams } from 'react-router-dom'
+
 
 const MyRecipes = () => {
 
     const [myRecipes, setMyRecipes] = useState([])
-    let params = useParams()
+    // let params = useParams()
 
     const getMyRecipes = async (name) => {
         const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&cuisine=${name}`)
@@ -14,8 +15,8 @@ const MyRecipes = () => {
     }
 
     useEffect(() => {
-        getMyRecipes(params.type)
-    }, [params.type])
+        getMyRecipes()
+    }, [])
     
 
     return (

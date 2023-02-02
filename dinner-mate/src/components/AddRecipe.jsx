@@ -9,7 +9,7 @@ const AddRecipe = () => {
         instructions: [],
         category: '',
         cookingTime: '',
-        servingSize: [],
+        servingSize: '',
         rating: '',
 
     })
@@ -17,9 +17,55 @@ const AddRecipe = () => {
     const [recipeId , setRecipeId] = useState('')
     const navigate = useNavigate()
 
+    const onChange = (e) => {
+        if (e.target.name === "ingredients" || e.target.name === "instructions") {
+            const value = e.target.value;
+            setAddRecipe({
+                ...addRecipe,
+                [e.target.name]: value.split("\n"),
+            })
+        }
+        else {
+            setAddRecipe({ ...addRecipe, [e.target.name]: e.target.value })
+        }
+    }
+    
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(
+            //url
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                    body: JSON.stringify({
+                        ...addRecipe,
+                        createdAt: new Date(),
+                    }),
+                }
+        )
+        if (response.ok) {
+            console.log(response);
+            const json = await response.json();
+            setRecipeId(json.recipe._id);
+            navigate(`/upload-image/${json.recipe._id}`);
+        }
+        else {
+            const error = await response.json();
+            console.error(error);
+        }
+        } 
+        catch (err) {
+          console.error(err);
+        }
+    }
+
     return (
         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
             <h1>Add your own delight here!</h1>
             <Category />
             <input
@@ -74,9 +120,8 @@ const AddRecipe = () => {
 
             />
         <button type="submit">Add Recipe</button>
-
       </form>
     )
 }
 
-export default CreateRecipeForm
+export default AddRecipe

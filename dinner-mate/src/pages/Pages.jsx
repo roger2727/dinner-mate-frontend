@@ -6,6 +6,8 @@ import Searched from './Searched'
 import Recipe from './Recipe'
 import Login from '../components/Login'
 import SignUp from '../components/SignUp'
+import AddRecipe from '../components/AddRecipe'
+import MyRecipes from './MyRecipes'
 
 const Pages = () => {
     return (
@@ -17,6 +19,8 @@ const Pages = () => {
                 <Route path="/recipe/:name" element={<Recipe />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/addrecipe" element={<AddRecipe />} />
+                <Route path="/myrecipes" element={<MyRecipes />} />
             </Routes>
         </>
 
