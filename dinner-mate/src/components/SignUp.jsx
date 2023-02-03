@@ -18,14 +18,14 @@ const SignUp = () => {
             await fetch(
                 'https://dinner-mate-backend-production.up.railway.app/auth/register',
                 
-            {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json",
-                },
-                body: JSON.stringify(newUser),
-            }
-            );
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(newUser),
+                }
+            )
             navigate("/login");
         } 
         catch (err) {

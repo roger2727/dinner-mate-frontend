@@ -16,10 +16,10 @@ const TodayPicks = () => {
 
     const getTodaysPicks = async () => {
         const api = await fetch(
-            'https://api.spoonacular.com/recipes/random?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&number=9'
+            'https://dinner-mate-backend-production.up.railway.app/public/home'
         )
         const data = await api.json();
-        setTodayspicks(data.recipes)
+        setTodayspicks(data)
     }
     return (
         <>
@@ -35,7 +35,7 @@ const TodayPicks = () => {
                     return (
                         <SplideSlide>
                             <Card>
-                                <Link to={'/recipe/'+ recipe.id}>
+                                <Link to={'/recipe/'+ recipe._id}>
                                     <p>{recipe.title}</p>
                                     <img src={recipe.image} alt={recipe.title} />
                                     <Gradient />

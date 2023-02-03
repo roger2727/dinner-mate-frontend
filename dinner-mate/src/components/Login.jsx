@@ -15,22 +15,22 @@ const Login = () => {
             const { username, password } = formData;
             const response = await fetch(
                 'https://dinner-mate-backend-production.up.railway.app/auth/login',
-            {
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ username, password }),
-            }
+                {
+                    method: "POST",
+                    headers: {
+                    "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ username, password }),
+                }
             )
             const data = await response.json();
     
             if (data.token) {
-            localStorage.setItem("token", data.token);
-            navigate('/user');
+                localStorage.setItem("token", data.token);
+                navigate('/')
             } 
             else {
-            console.error("Invalid email or password");
+                console.error("Invalid email or password");
             }
         } 
         catch (err) {

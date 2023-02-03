@@ -9,9 +9,13 @@ const MyRecipes = () => {
     // let params = useParams()
 
     const getMyRecipes = async (name) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&cuisine=${name}`)
-        const myrecipes = await data.json()
-        setMyRecipes(myrecipes.results)
+        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/recipes/all`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        const data = await res.json()
+        setMyRecipes(data.recipes)
     }
 
     useEffect(() => {
@@ -21,12 +25,12 @@ const MyRecipes = () => {
 
     return (
         <Grid>
-            {myRecipes.map((item) => {
+            {myRecipes.map((recipes) => {
                 return (
-                    <Card key={item.id}>
-                        <Link to={'/recipe/'+item.id}>
-                            <img src={item.image} alt="" />
-                            <h4>{item.title}</h4>
+                    <Card key={recipes._id}>
+                        <Link to={'/recipe/'+recipes._id}>
+                            <img src={recipes.image} alt="" />
+                            <h4>{recipes.title}</h4>
                         </Link>
                     </Card>
             )
