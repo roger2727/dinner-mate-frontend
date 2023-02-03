@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Category from './Category'
+import styled from 'styled-components'
 
 const AddRecipe = () => {
     const[addRecipe, setAddRecipe] = useState({
@@ -65,10 +66,10 @@ const AddRecipe = () => {
 
     return (
         
-        <form onSubmit={onSubmit}>
-            <h1>Add your own delight here!</h1>
+        <FormContainer onSubmit={onSubmit}>
+            <FormTitle>Add your own delight here!</FormTitle>
             <Category />
-            <input
+            <FormInput
             type="text"
             name= "title"
             placeholder="Name your Conction here..."
@@ -76,7 +77,7 @@ const AddRecipe = () => {
             onChange={onChange}
             required
             />
-            <textarea
+            <FormTextarea
             name="ingredients"
             placeholder="Example: 
             Salt
@@ -86,17 +87,17 @@ const AddRecipe = () => {
             onChange={onChange}
             required
             />
-            <textarea
-            name="Instructions"
-            placeholder="Example: 
-            Preheat oven to 350°F.
-            In a large bowl, combine flour, sugar, and baking powder.
-            Add in the butter, eggs, and milk. Mix until well combined."
-            value={addRecipe.instructions}
-            onChange={onChange}
-            required
+            <FormTextarea
+                name="Instructions"
+                placeholder="Example: 
+                Preheat oven to 350°F.
+                In a large bowl, combine flour, sugar, and baking powder.
+                Add in the butter, eggs, and milk. Mix until well combined."
+                value={addRecipe.instructions}
+                onChange={onChange}
+                required
             />
-            <select
+            <FormSelect
                 name= "Serving Size"
                 value={addRecipe.servingSize}
                 onChange={onChange}
@@ -110,8 +111,8 @@ const AddRecipe = () => {
                 <option value="6">6</option>
                 <option value="7">7</option>
                 <option value="8">8</option>
-            </select>
-            <input 
+            </FormSelect>
+            <FormInput 
                 type="text"
                 name="cookingTime"
                 placeholder="Cooking Time (in minutes)"
@@ -119,9 +120,77 @@ const AddRecipe = () => {
                 onChange={onChange}
 
             />
-        <button type="submit">Add Recipe</button>
-      </form>
+        <FormButton type="submit">Add Recipe</FormButton>
+      </FormContainer>
     )
 }
+
+const FormContainer = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E8E8E8;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #888888;
+  width: 100%;
+  margin: 50px auto;
+`;
+
+const FormTitle = styled.h1`
+  margin-bottom: 30px;
+`;
+
+const FormInput = styled.input`
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333333;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 5px #888888;
+`;
+
+const FormTextarea = styled.textarea`
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333333;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 5px #888888;
+  min-height: 100px;
+
+
+`;
+
+const FormSelect = styled.select`
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  color: #333333;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 5px #888888;
+`;
+
+const FormButton = styled.button`
+  width: 20%;
+  height: 40px;
+  background-color: #333333;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: #444444;
+  }
+`;
 
 export default AddRecipe

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
+import StarRating from '../components/StarRating'
 
 
 
@@ -26,6 +27,7 @@ const Recipe = () => {
             <div>
                 <h2>{details.title}</h2>
                 <img src={details.image} alt="" />
+                <StarRating />
             </div>
             <Info>
                 <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>

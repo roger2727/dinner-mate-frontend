@@ -6,8 +6,15 @@ button {
   }
   .on {
     color: #085659;
+    transition: ease-in-out 0.5s;
   }
   .off {
     color: #ccc;
+    transition: ease-in-out 0.5s;
   }
+
+button span.star {
+    font-size: 2.5rem;
+}
+
   

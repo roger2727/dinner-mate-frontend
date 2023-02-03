@@ -1,5 +1,6 @@
 import React from 'react'
-import StarRating from './StarRating.css'
+import './StarRating.css'
+import { useState } from 'react'
 
 const StarRating = () => {
     const [rating, setRating] = useState(0)
