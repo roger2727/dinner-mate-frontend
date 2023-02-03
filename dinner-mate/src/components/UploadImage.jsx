@@ -16,17 +16,17 @@ const UploadImage = () => {
         e.preventDefault();
         try {
             if (!localStorage.getItem("token")) return
-            const formData = new FormData();
+            const formData = new FormData()
             formData.append("image", selectedImage)
             const response = await fetch(
-            `https://dinner-mate-backend-production.up.railway.app/recipes/upload-image/${recipeId}?width=1000`,
-            {
-                method: "POST",
-                body: formData,
-                headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-                },
-            }
+                `https://dinner-mate-backend-production.up.railway.app/recipes/upload-image/${recipeId}?width=1000`,
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                    },
+                }
             )
             if (response.ok) {
                 navigate(`/recipe/${recipeId}}`);
