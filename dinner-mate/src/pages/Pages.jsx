@@ -14,9 +14,9 @@ const Pages = () => {
         <>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/mealTime/:type" element={<MealTime />} />
+                <Route path="/mealTime/:category" element={<MealTime />} />
                 <Route path="/searched/:search" element={<Searched />} />
-                <Route path="/recipe/:name" element={<Recipe />} />
+                <Route path="/recipe/:id" element={<Recipe />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/addrecipe" element={<AddRecipe />} />

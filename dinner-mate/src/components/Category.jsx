@@ -10,21 +10,21 @@ import styled from 'styled-components'
 const Category = () => {
     return (
         <List>
-            <Slink to={"/mealTime/Italian"}>
+            <Slink to={"/mealTime/Breakfast"}>
                 <AiOutlineCoffee />
                 <h4>Breakfast</h4>
             </Slink>
-            <Slink to={"mealTime/American"}>
+            <Slink to={"mealTime/Lunch"}>
                 <CiPizza />
                 <h4>Lunch</h4>
             </Slink> 
-            <Slink to={"mealTime/Thai"}>
+            <Slink to={"mealTime/Dinner"}>
                 <GiChopsticks />
                 <h4>Dinner</h4>
             </Slink> 
-            <Slink to={"mealTime/Japanese"}>
+            <Slink to={"mealTime/Dessert"}>
                 <BiCake />
-                <h4>Desert</h4>
+                <h4>Dessert</h4>
             </Slink> 
         </List>
     )

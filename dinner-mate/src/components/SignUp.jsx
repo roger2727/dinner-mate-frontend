@@ -16,7 +16,8 @@ const SignUp = () => {
         try {
             const newUser = { email, username, password };
             await fetch(
-            //url,
+                'https://dinner-mate-backend-production.up.railway.app/auth/register',
+                
             {
                 method: "POST",
                 headers: {

@@ -7,27 +7,27 @@ import { Link, useParams } from "react-router-dom"
 const mealTime = () => {
 
     const [mealTime, setMealTime] = useState([])
-    let params = useParams()
+    const { category } = useParams()
 
 
-    const getMealTime = async (name) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&cuisine=${name}`)
-        const recipes = await data.json()
-        setMealTime(recipes.results)
+    const getMealTime = async (category) => {
+        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/category/${category}`)
+        const data = await res.json()
+        setMealTime(data.category)
     }
 
     useEffect(() => {
-        getMealTime(params.type)
-    },[params.type])
+        getMealTime()
+    },[category])
     
     return (
         <Grid>
-            {mealTime.map((item) => {
+            {mealTime.map((recipe) => {
                 return (
-                    <Card key={item.id}>
-                        <Link to={'/recipe/'+item.id}>
-                            <img src={item.image} alt="" />
-                            <h4>{item.title}</h4>
+                    <Card key={recipe._id}>
+                        <Link to={'/recipe/'+recipe._id}>
+                            <img src={recipe.image} alt="" />
+                            <h4>{recipe.title}</h4>
                         </Link>
                     </Card>
                 )

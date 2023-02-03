@@ -2,38 +2,47 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import StarRating from '../components/StarRating'
+import Navbar from '../components/Navbar'
+import Search from '../components/Search'
+import Category from '../components/Category'
 
 
 
 const Recipe = () => {
 
-    let params = useParams()
+    const { id } = useParams()
     const [details, setDetails] = useState({})
     const [activeTab, setActiveTab] = useState('instructions')
 
 
     const fetchDetails = async () => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=8e4adb9641bf4614afe4dcb88f4b147a`)
-        const detailData = await data.json()
-        setDetails(detailData)
+        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/${id}`)
+        const data = await res.json()
+        setDetails(data.recipe)
 
     }
 
     useEffect(() => {
         fetchDetails()
-    }, [params.name])
+    }, [id])
     return (
-        <DetailWrapper>
-            <div>
-                <h2>{details.title}</h2>
-                <img src={details.image} alt="" />
-                <StarRating />
-            </div>
-            <Info>
-                <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>
-                <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
-            </Info>
-        </DetailWrapper>
+        <>
+            <Navbar />
+            <Search />
+            <Category />
+            <DetailWrapper>
+                <div>
+                    <h2>{details.title}</h2>
+                    <img src={details.image} alt="" />
+                    <StarRating />
+                </div>
+                <Info>
+                    <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>
+                    <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
+                </Info>
+            </DetailWrapper>
+        </>
+        
     )
 }
 
@@ -69,6 +78,7 @@ const Button = styled.button`
 
 const Info = styled.div`
     margin-left: 10rem;
+
 `;
 
 export default Recipe
