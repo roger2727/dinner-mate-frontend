@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useParams } from 'react-router-dom'
+import Category from '../components/Category'
 
 const EditRecipe = () => {
     const navigate = useNavigate()
@@ -42,12 +45,15 @@ const EditRecipe = () => {
             )
             navigate('/recipe/:id')
         }
+        catch (err) {
+            console.error(err)
+        }
     }
 
 
 
     return (
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleUpdate}>
             <h1>You want to make changes? We get it, update away...</h1>
             <Category />
             <input
@@ -55,7 +61,7 @@ const EditRecipe = () => {
             name= "title"
             placeholder="Name your Conction here..."
             value={setRecipe.title}
-            onChange={onChange}
+            onChange={handleSubmit}
             required
             />
             <textarea
@@ -80,7 +86,7 @@ const EditRecipe = () => {
             />
             <select
                 name= "Serving Size"
-                value={addRecipe.servingSize}
+                value={setRecipe.servingSize}
                 onChange={onChange}
                 required
             >

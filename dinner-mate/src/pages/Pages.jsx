@@ -8,6 +8,7 @@ import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import AddRecipe from '../components/AddRecipe'
 import MyRecipes from './MyRecipes'
+import EditRecipe from '../components/EditRecipe'
 
 const Pages = () => {
     return (
@@ -21,6 +22,7 @@ const Pages = () => {
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/addrecipe" element={<AddRecipe />} />
                 <Route path="/myrecipes" element={<MyRecipes />} />
+                <Route path='/editrecipe' element={<EditRecipe />} />
             </Routes>
         </>
 

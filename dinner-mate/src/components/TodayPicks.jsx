@@ -31,19 +31,19 @@ const TodayPicks = () => {
                     pagination: false,
                     gap: "5rem",
                 }}>
-                {todayspicks.map((recipe) => {
-                    return (
-                        <SplideSlide>
-                            <Card>
-                                <Link to={'/recipe/'+ recipe._id}>
-                                    <p>{recipe.title}</p>
-                                    <img src={recipe.image} alt={recipe.title} />
-                                    <Gradient />
-                                </Link>
-                            </Card>
-                        </SplideSlide>                              
-                    )
-                })}                            
+           {todayspicks.map((recipe) => {
+            return (
+              <SplideSlide key={recipe._id}>
+                <Card>
+                  <Link to={"/recipe/" + recipe._id}>
+                    <p>{recipe.title}</p>
+                    <img src={recipe.image} alt={recipe.title} />
+                    <Gradient />
+                  </Link>
+                </Card>
+              </SplideSlide>
+            );
+          })}                        
                 </Splide>
             </Wrapper>
         </>
