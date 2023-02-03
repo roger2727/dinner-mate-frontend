@@ -34,7 +34,7 @@ const Recipe = () => {
             <DetailWrapper>
                 <div>
                     <h2>{details.title}</h2>
-                    <img src={details.image} alt="" />
+                    <img src={details.image} width="556" height="370" alt="" />
                     <StarRating />
                     <Favourite />
                 </div>

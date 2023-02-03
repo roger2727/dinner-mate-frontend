@@ -1,6 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const EditRecipe = () => {
+    const navigate = useNavigate()
+    const [recipe, setRecipe] = useState({})
+    const { recipeId } = useParams()
+
+    const getRecipe = async () => {
+        try {
+            const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/${recipeId}`, {
+                    headers: {
+                        Authorization: "Bearer " + localStorage.getItem('token'),
+                    },
+                }
+            )
+            const data = await res.json()
+            setRecipe(data.recipe)
+        } catch (err) {
+            console.error(err)
+        }
+        
+    }
+    
+    useEffect(() => {
+        getRecipe()
+    }, [recipeId])
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        try {
+            await fetch (
+                `https://dinner-mate-backend-production.up.railway.app/recipes/update/${recipeId}`,
+                {
+                    method: 'PATCH', 
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: 'Bearer ' + localStorage.getItem('token'),
+                    },
+                    body: JSON.stringify(recipe)
+                }
+            )
+            navigate('/recipe/:id')
+        }
+    }
+
+
+
     return (
             <form onSubmit={onSubmit}>
             <h1>You want to make changes? We get it, update away...</h1>
@@ -9,7 +54,7 @@ const EditRecipe = () => {
             type="text"
             name= "title"
             placeholder="Name your Conction here..."
-            value={addRecipe.title}
+            value={setRecipe.title}
             onChange={onChange}
             required
             />
@@ -19,7 +64,7 @@ const EditRecipe = () => {
             Salt
             Chicken
             Salad"
-            value={addRecipe.ingredients.join('\n')}
+            value={setRecipe.ingredients.join('\n')}
             onChange={onChange}
             required
             />

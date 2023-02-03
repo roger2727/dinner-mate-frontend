@@ -1,24 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
-import { motion } from "framer-motion"
+
+
 import { Link, useParams } from "react-router-dom"
 
 
-const mealTime = () => {
+// const mealTime = () => {
 
+//     const [mealTime, setMealTime] = useState([])
+//     const { category } = useParams()
+
+
+//     const getMealTime = async (category) => {
+//         const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/${category}`)
+//         const data = await res.json()
+//         setMealTime(data.category)
+//     }
+
+//     useEffect(() => {
+//         getMealTime(category)
+//     },[category])
+
+const MealTime = () => {
     const [mealTime, setMealTime] = useState([])
     const { category } = useParams()
-
-
-    const getMealTime = async (category) => {
-        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/recipe/${category}`)
-        const data = await res.json()
-        setMealTime(data.category)
-    }
-
+  
     useEffect(() => {
-        getMealTime()
-    },[category])
+      fetch(`https://dinner-mate-backend-production.up.railway.app/public/category/${category}`)
+        .then((res) => res.json())
+        .then((data) => setMealTime(data))
+        .catch((err) => console.log(err));
+    }, [category])
+    
+    
+
     
     return (
         <Grid>
@@ -35,6 +50,12 @@ const mealTime = () => {
         </Grid>
     )
 }
+ 
+
+
+
+  
+
 
 
 const Grid = styled.div`
@@ -59,4 +80,4 @@ const Card = styled.div`
         padding: 1rem;
     }
 `;
-export default mealTime
+export default MealTime
