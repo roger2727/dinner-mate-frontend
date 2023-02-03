@@ -1,8 +1,7 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const UploadImage = () => {
+const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();
 
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ const UploadImage = () => {
       const formData = new FormData();
       formData.append("image", selectedImage);
       const response = await fetch(
-        `https://dinner-mate-backend-production.up.railway.app/recipes/upload-image/${recipeId}?width=1000`,
+        `https://dm-backend-test-production.up.railway.app/recipes/upload-image/${recipeId}?width=300`,
         {
           method: "POST",
           body: formData,
@@ -29,7 +28,7 @@ const UploadImage = () => {
         }
       );
       if (response.ok) {
-        navigate(`/recipe/${recipeId}}`);
+        navigate(`/${recipeId}`);
       } else {
         const error = await response.json();
         console.error(error);
@@ -42,7 +41,7 @@ const UploadImage = () => {
   return (
     <div>
       <div className="upload-box">
-        <p>Please upload a image for your recipe</p>
+        <p>please upload a image for your recipe</p>
         <input className="file" type="file" onChange={handleImageChange} />
         <button className="upload-btn" onClick={handleUpload}>
           Upload
@@ -52,4 +51,4 @@ const UploadImage = () => {
   );
 };
 
-export default UploadImage;
+export default AddImage;

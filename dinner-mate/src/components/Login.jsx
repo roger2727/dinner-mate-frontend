@@ -4,15 +4,18 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
+  //   const [username, setUsername] = useState("");
+  //   const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { username, password } = formData;
+      const { email, password } = formData;
       const response = await fetch(
         "https://dinner-mate-backend-production.up.railway.app/auth/login",
         {
@@ -20,7 +23,7 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ username, password }),
+          body: JSON.stringify({ email, password }),
         }
       );
       const data = await response.json();
@@ -36,21 +39,31 @@ const Login = () => {
     }
   };
 
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const { email, password } = formData;
+
   return (
     <MainContainer onSubmit={onSubmit}>
-      <LoginText>Log In</LoginText>
+      <LoginText htmlFor="email">Log In</LoginText>
       <InputContainer>
         <StyledInput
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          name="email"
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={onChange}
+          required
         />
         <StyledInput
+          name="password"
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={onChange}
+          required
         />
       </InputContainer>
       <ButtonContainer>

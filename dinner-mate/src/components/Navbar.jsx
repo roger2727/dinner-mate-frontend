@@ -2,8 +2,28 @@ import React from "react";
 import { GiKnifeFork } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const response = await fetch(
+        "https://dinner-mate-backend-production.up.railway.app/auth/logout",
+        {
+          method: "POST",
+        }
+      );
+      if (response.ok) {
+        localStorage.removeItem("token");
+        navigate("/");
+      } else {
+        console.log("An error occurred while logging out.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <Header>
       <Nav>
@@ -12,17 +32,17 @@ const Navbar = () => {
         {localStorage.getItem("token") ? (
           <Navlinks>
             <List>
-              <SLink>My Recipes</SLink>
+              <SLink to="myrecipes">My Recipes</SLink>
               <SLink>My Favourites</SLink>
-              <SLink>Create Recipe</SLink>
-              <SLink>Log Out</SLink>
+              <SLink to="addrecipe">Create Recipe</SLink>
+              <SLink onClick={handleLogout}>Log Out</SLink>
             </List>
           </Navlinks>
         ) : (
           <Navlinks>
             <List>
-              <SLink>Login</SLink>
-              <SLink>SignUp</SLink>
+              <SLink to="login">Login</SLink>
+              <SLink to="/signup">SignUp</SLink>
             </List>
           </Navlinks>
         )}
