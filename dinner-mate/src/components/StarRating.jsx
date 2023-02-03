@@ -1,21 +1,18 @@
-import React from 'react'
-import './StarRating.css'
-import { useState } from 'react'
+import React from "react";
+import "./StarRating.css";
 
-const StarRating = () => {
-    const [rating, setRating] = useState(0)
-    const [hover, setHover] = useState(0)
 
-    return (
-        <div className="star-rating">
-            {stars.map((_, index) => (
+const StarRating = ({ rating }) => {
+  const stars = Array(5).fill(0);
+  return (
+    <div className="star-box">
+      {stars.map((_, index) => (
         <span key={index} className={index < rating ? "star" : "star-outline"}>
           &#9733;
         </span>
       ))}
     </div>
-    )
-}
+  );
+};
 
-
-export default StarRating
+export default StarRating;

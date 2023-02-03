@@ -1,70 +1,78 @@
-import React from 'react'
-import { useState } from 'react'
-import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const [username, setUsername] = useState('')
-    const [password, setPassword] = useState('')
+  //   const [username, setUsername] = useState("");
+  //   const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const onSubmit = async (e) => {
-      e.preventDefault();
-      try {
-            const { username, password } = formData;
-            const response = await fetch(
-                'https://dinner-mate-backend-production.up.railway.app/auth/login',
-                {
-                    method: "POST",
-                    headers: {
-                    "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ username, password }),
-                }
-            )
-            const data = await response.json();
-    
-            if (data.token) {
-                localStorage.setItem("token", data.token);
-                navigate('/')
-            } 
-            else {
-                console.error("Invalid email or password");
-            }
-        } 
-        catch (err) {
-            console.error(err);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { email, password } = formData;
+      const response = await fetch(
+        "https://dinner-mate-backend-production.up.railway.app/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         }
+      );
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/");
+      } else {
+        console.error("Invalid email or password");
+      }
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    return (
-        <MainContainer onSubmit={onSubmit}>
-            <LoginText>
-                Log In
-            </LoginText>
-            <InputContainer>
-                    <StyledInput
-                        type= "text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <StyledInput
-                        type= "password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-            </InputContainer>
-            <ButtonContainer>
-                <StyledLogin type="submit">Login</StyledLogin>    
-            </ButtonContainer>
-            <SignUp>Don't have an account? Sign Up here!</SignUp>
-        </MainContainer>
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    )
-}
+  const { email, password } = formData;
+
+  return (
+    <MainContainer onSubmit={onSubmit}>
+      <LoginText htmlFor="email">Log In</LoginText>
+      <InputContainer>
+        <StyledInput
+          name="email"
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={onChange}
+          required
+        />
+        <StyledInput
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={onChange}
+          required
+        />
+      </InputContainer>
+      <ButtonContainer>
+        <StyledLogin type="submit">Login</StyledLogin>
+      </ButtonContainer>
+      <SignUp>Don't have an account? Sign Up here!</SignUp>
+    </MainContainer>
+  );
+};
 
 const MainContainer = styled.form`
     position: absolute;
@@ -86,16 +94,16 @@ const MainContainer = styled.form`
 `;
 
 const LoginText = styled.h2`
-    margin: 3rem 0 2rem 0;
+  margin: 3rem 0 2rem 0;
 `;
 
 const InputContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 20%;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 20%;
+  width: 100%;
 `;
 
 const StyledInput = styled.input`
@@ -109,12 +117,11 @@ const StyledInput = styled.input`
 `;
 
 const ButtonContainer = styled.div`
-    margin: 1rem 0 2rem 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+  margin: 1rem 0 2rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledLogin = styled.button`
@@ -130,8 +137,8 @@ const StyledLogin = styled.button`
 `;
 
 const SignUp = styled.h4`
-    cursor: pointer;
-    color: white;
+  cursor: pointer;
+  color: white;
 `;
 
-export default Login
+export default Login;

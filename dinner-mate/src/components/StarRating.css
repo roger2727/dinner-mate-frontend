@@ -1,20 +1,14 @@
-button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  .on {
-    color: #085659;
-    transition: ease-in-out 0.5s;
-  }
-  .off {
-    color: #ccc;
-    transition: ease-in-out 0.5s;
-  }
-
-button span.star {
-    font-size: 2.5rem;
+.star {
+  color: #ffd700;
+  font-size: 50px;
 }
+.star-box {
+  /* background-color: #085659; */
+  border-radius: 50px;
 
-  
+  text-align: center;
+}
+.star-outline {
+  color: #dcdee6;
+  font-size: 50px;
+}

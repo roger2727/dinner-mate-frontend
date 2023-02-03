@@ -1,67 +1,82 @@
-import React from 'react'
-import { GiKnifeFork } from 'react-icons/gi'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-
-
-
+import React from "react";
+import { GiKnifeFork } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    return (
-        <Header>
-            <Nav>
-                <GiKnifeFork />
-                <Logo to={'/'}>DinnerMate</Logo>
-                {localStorage.getItem("token") ? (
-                    <Navlinks>
-                        <List>
-                            <SLink>My Recipes</SLink>
-                            <SLink>Create Recipe</SLink>
-                            <SLink>Log Out</SLink>
-                        </List>
-                    </Navlinks>
-                ) : (
-                    <Navlinks>
-                        <List>
-                            <SLink>Login</SLink>
-                            <SLink>SignUp</SLink>
-                        </List>
-                    </Navlinks>
-                )}
-            </Nav>
-        </Header>
-    )
-}
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const response = await fetch(
+        "https://dinner-mate-backend-production.up.railway.app/auth/logout",
+        {
+          method: "POST",
+        }
+      );
+      if (response.ok) {
+        localStorage.removeItem("token");
+        navigate("/");
+      } else {
+        console.log("An error occurred while logging out.");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  return (
+    <Header>
+      <Nav>
+        <GiKnifeFork />
+        <Logo to={"/"}>DinnerMate</Logo>
+        {localStorage.getItem("token") ? (
+          <Navlinks>
+            <List>
+              <SLink to="myrecipes">My Recipes</SLink>
+              <SLink>My Favourites</SLink>
+              <SLink to="addrecipe">Create Recipe</SLink>
+              <SLink onClick={handleLogout}>Log Out</SLink>
+            </List>
+          </Navlinks>
+        ) : (
+          <Navlinks>
+            <List>
+              <SLink to="/login">Login</SLink>
+              <SLink to="/signup">SignUp</SLink>
+            </List>
+          </Navlinks>
+        )}
+      </Nav>
+    </Header>
+  );
+};
 
 const Header = styled.div`
-    height: 15vh;
-    padding: 1rem;
+  height: 15vh;
+  padding: 1rem;
 `;
 
 const Nav = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center; 
-    svg {
-        font-size: 2rem;
-        fill: #085659;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    font-size: 2rem;
+    fill: #085659;
+  }
 `;
 
 const Navlinks = styled.div`
-    flex: 1;
-    text-align: right;
-
-
+  flex: 1;
+  text-align: right;
 `;
 
 const List = styled.ul`
-    list-style: none;
-    display: flex;
-    justify-content: end;
-    padding: 1rem;
-
+  list-style: none;
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
 `;
 
 const SLink = styled(Link)`
@@ -86,12 +101,9 @@ const SLink = styled(Link)`
 `;
 
 const Logo = styled(Link)`
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 400;
-
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 400;
 `;
 
-
-
-export default Navbar
+export default Navbar;
