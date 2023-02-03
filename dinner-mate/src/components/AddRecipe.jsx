@@ -126,7 +126,7 @@ const AddRecipe = () => {
         <option value="8">8</option>
       </FormSelect>
       <FormInput
-        type="text"
+        type="number"
         name="cookingTime"
         placeholder="Cooking Time (in minutes)"
         value={addRecipe.cookingTime}
