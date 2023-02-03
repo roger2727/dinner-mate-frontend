@@ -8,7 +8,7 @@ const MyRecipes = () => {
     const [myRecipes, setMyRecipes] = useState([])
     // let params = useParams()
 
-    const getMyRecipes = async (name) => {
+    const getMyRecipes = async () => {
         const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/recipes/all`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`

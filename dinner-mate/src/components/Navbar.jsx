@@ -16,7 +16,6 @@ const Navbar = () => {
                     <Navlinks>
                         <List>
                             <SLink>My Recipes</SLink>
-                            <SLink>My Favourites</SLink>
                             <SLink>Create Recipe</SLink>
                             <SLink>Log Out</SLink>
                         </List>

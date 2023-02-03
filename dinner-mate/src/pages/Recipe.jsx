@@ -5,6 +5,7 @@ import StarRating from '../components/StarRating'
 import Navbar from '../components/Navbar'
 import Search from '../components/Search'
 import Category from '../components/Category'
+import Favourite from '../components/Favourite'
 
 
 
@@ -35,6 +36,7 @@ const Recipe = () => {
                     <h2>{details.title}</h2>
                     <img src={details.image} alt="" />
                     <StarRating />
+                    <Favourite />
                 </div>
                 <Info>
                     <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>
