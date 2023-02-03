@@ -11,7 +11,7 @@ const mealTime = () => {
 
 
     const getMealTime = async (category) => {
-        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/category/${category}`)
+        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/recipe/${category}`)
         const data = await res.json()
         setMealTime(data.category)
     }

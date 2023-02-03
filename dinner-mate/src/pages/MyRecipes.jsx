@@ -6,21 +6,31 @@ import { Link, useParams } from 'react-router-dom'
 const MyRecipes = () => {
 
     const [myRecipes, setMyRecipes] = useState([])
-    // let params = useParams()
+    const { userId } = useParams()
+    const [currentUserId, setCurrentUserId] = useState('')
 
     const getMyRecipes = async () => {
-        const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/recipes/all`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            }
-        })
-        const data = await res.json()
-        setMyRecipes(data.recipes)
-    }
+        try {
+            const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/recipes/all`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                }
+            )
+            const data = await res.json()
+            setMyRecipes(data.recipes)
+            setCurrentUserId(data.userId)
+        } 
+        catch (err) {
+            console.log(err)
+        } 
+        }
+
 
     useEffect(() => {
         getMyRecipes()
-    }, [])
+    }, [userId])
     
 
     return (
