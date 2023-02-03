@@ -12,12 +12,23 @@ const Navbar = () => {
             <Nav>
                 <GiKnifeFork />
                 <Logo to={'/'}>DinnerMate</Logo>
-                <Navlinks>
-                    <List>
-                        <SLink>Login</SLink>
-                        <SLink>SignUp</SLink>
-                    </List>
-                </Navlinks> 
+                {localStorage.getItem("token") ? (
+                    <Navlinks>
+                        <List>
+                            <SLink>My Recipes</SLink>
+                            <SLink>My Favourites</SLink>
+                            <SLink>Create Recipe</SLink>
+                            <SLink>Log Out</SLink>
+                        </List>
+                    </Navlinks>
+                ) : (
+                    <Navlinks>
+                        <List>
+                            <SLink>Login</SLink>
+                            <SLink>SignUp</SLink>
+                        </List>
+                    </Navlinks>
+                )}
             </Nav>
         </Header>
     )
