@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const AddRecipe = () => {
 
-    
+
     const[addRecipe, setAddRecipe] = useState({
         title: '',
         ingredients: [],
@@ -36,8 +36,9 @@ const AddRecipe = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(
-            //url
+            const response = await fetch (
+                `https://dinner-mate-backend-production.up.railway.app/recipes/update/${recipeId}`,
+            
                 {
                     method: "POST",
                     headers: {

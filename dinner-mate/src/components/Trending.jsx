@@ -34,7 +34,7 @@ const Trending = () => {
                 }}>
                 {trending.map((recipe) => {
                     return (
-                        <SplideSlide>
+                        <SplideSlide key={recipe._id}>
                             <Card>
                                 <Link to={'/recipe/' + recipe._id}>
                                     <p>{recipe.title}</p>
