@@ -33,6 +33,7 @@ const MealTime = () => {
 
   return (
     <Grid>
+      <h1>${category}</h1>
       {mealTime.map((recipe) => {
         return (
           <Card key={recipe._id}>
