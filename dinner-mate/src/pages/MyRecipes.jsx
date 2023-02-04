@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const MyRecipes = () => {
   const [myRecipes, setMyRecipes] = useState([]);
   const { userId } = useParams();
   const [currentUserId, setCurrentUserId] = useState("");
+  const navigate = useNavigate()
 
   const getMyRecipes = async () => {
     try {
@@ -30,7 +31,7 @@ const MyRecipes = () => {
   }, [userId]);
 
   const handleUpdate = (recipeId) => {
-    Navigate(`/editrecipe/${recipeId}`);
+    navigate(`/editrecipe/${recipeId}`);
   }
 
   const handleDelete = async (recipeId) => {
@@ -56,9 +57,9 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
-                            <button onClick={() => handleUpdate(recipes._id)}>Edit</button>
-                            <button onClick={() => handleDelete(recipes._id)}>Delete</button>
                         </Link>
+                        <button onClick={() => handleUpdate(recipes._id)}>Edit</button>
+                        <button onClick={() => handleDelete(recipes._id)}>Delete</button>
                     </Card>
                 )
         })}
