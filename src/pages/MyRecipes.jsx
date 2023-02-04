@@ -81,18 +81,19 @@ const Card = styled.div`
     img {
         width: 20vw;
         border-radius: 2rem;
-
+        justify-content: center;
+        box-shadow: 0.5rem;
     }
     a {
         text-decoration: none;
     }
     h4 {
-        text-align: center;
+        text-align: left;
         padding: 1rem;
     }
     button {
-        justify-content: center;
-        background-color: green;
+        align-items: center;
+        border-radius: 0.5rem;
     }
 `;
 
