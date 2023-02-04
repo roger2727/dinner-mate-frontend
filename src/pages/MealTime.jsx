@@ -60,9 +60,10 @@ const Grid = styled.div`
 
 const Card = styled.div`
   img {
-    width: 100%;
+    width: 20vw;
     border-radius: 2rem;
     padding: 1rem;
+    border: 2px solid blue;
   }
   a {
     text-decoration: none;

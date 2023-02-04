@@ -82,18 +82,18 @@ const Card = styled.div`
         width: 20vw;
         border-radius: 2rem;
         justify-content: center;
-        box-shadow: 0.5rem;
     }
     a {
         text-decoration: none;
     }
     h4 {
-        text-align: left;
+        text-align: center;
         padding: 1rem;
     }
     button {
         align-items: center;
-        border-radius: 0.5rem;
+        border-radius: 0.25rem;
+        padding: 0.5rem
     }
 `;
 
