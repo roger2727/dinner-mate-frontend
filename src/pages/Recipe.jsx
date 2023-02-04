@@ -2,9 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Rating from "../components/StarRating";
-import Navbar from "../components/Navbar";
-// import Search from "../components/Search";
-// import Category from "../components/Category";
 import "./Recipes.css";
 
 const Recipe = () => {
