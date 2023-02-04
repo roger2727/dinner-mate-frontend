@@ -38,7 +38,7 @@ const Recipe = () => {
           <div className="image">
             <h2 style={{textAlign: "center"}}>{recipe.title}</h2>
             <div className="recipe-image" >
-              <img src={recipe.image} alt={recipe.title} />
+              <img src={recipe.image} alt={recipe.title} style={{width: "100%", height: "100%"}} />
             </div>
 
             <Rating rating={recipe.rating} />
