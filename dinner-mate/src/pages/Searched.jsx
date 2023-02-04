@@ -1,63 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import styled from 'styled-components'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+const RecipeTitle = () => {
+  const [recipes, setRecipes] = useState([]);
+  const { title } = useParams();
 
-const Searched = () => {
-
-    const [searched, setSearched] = useState([])
-    let params = useParams()
-
-    const getSearched = async (name) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=8e4adb9641bf4614afe4dcb88f4b147a&query=${name}`)
-        const recipes = await data.json()
-        setSearched(recipes.results)
-
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `https://dinner-mate-backend-production.up.railway.app/public/search-title/${title}`
+        );
+        const data = await res.json();
+        setRecipes(data.recipes);
+      } catch (err) {
+        console.log(err);
+      }
     }
+    fetchData();
+  }, [title]);
 
-    useEffect (() => {
-        getSearched(params.search)
-    }, [params.search])
+  return (
+    <div className="category-page">
+      <h2>Recipes with title {title}</h2>
+      <div className="image-container">
+        {recipes.map((recipe) => (
+          <Link key={recipe._id} to={`/${recipe._id}`}>
+            <img src={recipe.image} alt={recipe.title} />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-    return (
-        <Grid>
-            {searched.map((item) => {
-                return (
-                    <Card key={item.id}>
-                        <Link to={'/recipe/'+ item.id}>
-                            <img src={item.image} alt="" />
-                            <h4>{item.title}</h4>
-                        </Link>
-                    </Card>
-                )
-            })}
-        </Grid>
-    )
-}
-
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    grid-gap: 3rem; 
-
-`;
-
-const Card = styled.div`
-    img{
-        width: 100%;
-        border-radius: 2rem;
-
-    }
-    a {
-        text-decoration: none;
-
-    }
-    h4 {
-        text-align: center;
-        padding: 1rem;
-    }
-`;
-
-
-
-export default Searched
+export default RecipeTitle;
