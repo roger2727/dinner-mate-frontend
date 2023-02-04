@@ -33,7 +33,7 @@ const MealTime = () => {
 
   return (
     <>
-    <h3 style="text-align:center">{category} Recipes!</h3>
+    <h3>{category} Recipes!</h3>
       <Grid>
         {mealTime.map((recipe) => {
           return (
