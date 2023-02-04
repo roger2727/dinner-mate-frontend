@@ -5,6 +5,7 @@ import Rating from "../components/StarRating";
 // import Navbar from "../components/Navbar";
 // import Search from "../components/Search";
 // import Category from "../components/Category";
+import "./Recipes.css";
 
 const Recipe = () => {
   const { id } = useParams();
