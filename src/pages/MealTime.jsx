@@ -39,11 +39,11 @@ const MealTime = () => {
         <Grid>
           {mealTime.map((recipe) => {
             return (
-              <Card key={recipe._id} style={{alignItems: "center"}}>
+              <Card key={recipe._id} style={{justifyContent: "center"}}>
                 <Link to={"/recipe/" + recipe._id}>
                   <img src={recipe.image} alt="" />
                   <h4>{recipe.title}</h4>
-                  <Rating rating={recipe.rating} />
+                  <Rating rating={recipe.rating} style={{justifyContent: "center"}}/>
                 </Link>
               </Card>
             );
