@@ -35,7 +35,7 @@ const MyRecipes = () => {
 
   const handleDelete = async (recipeId) => {
     try {
-      await fetch(`https//dinner-mate-backend-production.up.railway.app/recipes/delete/${recipeId}`, {
+      await fetch(`https://dinner-mate-backend-production.up.railway.app/recipes/delete/${recipeId}`, {
         method: 'DELETE',
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -56,7 +56,7 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
-                            <button onClick={() => handleUpdate(recipes._id)}>Edit</button>
+                            <button onClick={() => handleUpdate(recipes._id)}><Link to={"/editrecipe/" +recipes._id}>Edit</Link></button>
                             <button onClick={() => handleDelete(recipes._id)}>Delete</button>
                         </Link>
                     </Card>
