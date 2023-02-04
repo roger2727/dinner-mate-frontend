@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 const MyRecipes = () => {
   const [myRecipes, setMyRecipes] = useState([]);
@@ -29,40 +29,62 @@ const MyRecipes = () => {
     getMyRecipes();
   }, [userId]);
 
-  return (
-    <Grid>
-      {myRecipes.map((recipes) => {
-        return (
-          <Card key={recipes._id}>
-            <Link to={"/recipe/" + recipes._id}>
-              <img src={recipes.image} alt="" />
-              <h4>{recipes.title}</h4>
-            </Link>
-          </Card>
-        );
-      })}
-    </Grid>
-  );
-};
+  const handleUpdate = (recipeId) => {
+    Navigate(`/update/${recipeId}`);
+  }
+
+  const handleDelete = async (recipeId) => {
+    try {
+      await fetch(`https//dinner-mate-backend-production.up.railway.app/recipes/delete/${recipeId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      })
+      setMyRecipes(myRecipes.filter((recipe) => recipe.id !== recipeId))
+    }
+    catch (err) {
+      console.error(err)
+    }
+  }
+
+    return (
+        <Grid>
+            {myRecipes.map((recipes) => {
+                return (
+                    <Card key={recipes._id}>
+                        <Link to={"/recipe/" + recipes._id}>
+                            <img src={recipes.image} alt="" />
+                            <h4>{recipes.title}</h4>
+                            <button onClick={() => handleUpdate(recipes._id)}>Edit</button>
+                            <button onClick={() => handleDelete(recipes._id)}>Delete</button>
+                        </Link>
+                    </Card>
+                )
+        })}
+        </Grid>
+    )
+}
 
 const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-gap: 3rem;
 `;
 
 const Card = styled.div`
-  img {
-    width: 100%;
-    border-radius: 2rem;
-  }
-  a {
-    text-decoration: none;
-  }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
+    img {
+        width: 100%;
+        border-radius: 2rem;
+
+    }
+    a {
+        text-decoration: none;
+    }
+    h4 {
+        text-align: center;
+        padding: 1rem;
+    }
 `;
 
 export default MyRecipes;
