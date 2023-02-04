@@ -72,17 +72,17 @@ const Recipe = () => {
   );
 };
 
-const Button = styled.button`
-  padding: 1rem 2rem;
-  color: #313131;
-  background: white;
-  border: 2px solid black;
-  margin-right: 2rem;
-  font-weight: 600;
-`;
+// const Button = styled.button`
+//   padding: 1rem 2rem;
+//   color: #313131;
+//   background: white;
+//   border: 2px solid black;
+//   margin-right: 2rem;
+//   font-weight: 600;
+// `;
 
-const Info = styled.div`
-  margin-left: 10rem;
-`;
+// const Info = styled.div`
+//   margin-left: 10rem;
+// `;
 
 export default Recipe;
