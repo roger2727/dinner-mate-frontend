@@ -33,7 +33,7 @@ const MealTime = () => {
 
   return (
     <>
-    <h3>{category}</h3>
+    <h3 style="text-align:center">{category} Recipes!</h3>
       <Grid>
         {mealTime.map((recipe) => {
           return (
@@ -58,7 +58,7 @@ const Grid = styled.div`
 
 const Card = styled.div`
   img {
-    width: 100%;
+    width: 50%;
     border-radius: 2rem;
     padding: 1rem;
   }
