@@ -35,7 +35,6 @@ const MealTime = () => {
 
   return (
     <>
-      {/* <Navbar /> */}
       <h1>{category} Recipes!</h1>
         <Grid>
           {mealTime.map((recipe) => {
