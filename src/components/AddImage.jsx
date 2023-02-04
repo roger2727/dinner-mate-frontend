@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar"
 
 const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -39,15 +40,18 @@ const AddImage = () => {
   };
 
   return (
-    <div>
-      <div className="upload-box">
-        <p>please upload a image for your recipe</p>
-        <input className="file" type="file" onChange={handleImageChange} />
-        <button className="upload-btn" onClick={handleUpload}>
-          Upload
-        </button>
+    <>
+      <Navbar />
+      <div>
+        <div className="upload-box">
+          <p>please upload a image for your recipe</p>
+          <input className="file" type="file" onChange={handleImageChange} />
+          <button className="upload-btn" onClick={handleUpload}>
+            Upload
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
