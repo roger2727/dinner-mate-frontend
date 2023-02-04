@@ -44,7 +44,7 @@ const EditRecipe = () => {
           body: JSON.stringify(recipe),
         }
       );
-      navigate("/recipe/:id");
+      navigate(`/recipe/${recipeId}`);
     } catch (err) {
       console.error(err);
     }
