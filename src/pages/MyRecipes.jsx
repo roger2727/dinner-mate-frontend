@@ -56,7 +56,7 @@ const MyRecipes = () => {
         <Grid>
             {myRecipes.map((recipes) => {
                 return (
-                    <Card key={recipes._id} style={{maxHeight: "50vh"}}>
+                    <Card key={recipes._id} style={{maxHeight: "35vh", border: "2px inset grey"}}>
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
