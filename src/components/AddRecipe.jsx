@@ -313,7 +313,7 @@ const AddRecipe = () => {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor: "grey", justifyContent: "center"}}>
       <h1 className="add-title">Add Recipe</h1>
       <div className="form-box">
         <form onSubmit={onSubmit}>
