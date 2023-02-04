@@ -4,20 +4,19 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    username: "",
-  });
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newUser = { email, password, username };
+      const newUser = { email, username, password };
       await fetch(
         "https://dinner-mate-backend-production.up.railway.app/auth/register",
+
         {
           method: "POST",
           headers: {
@@ -32,61 +31,34 @@ const SignUp = () => {
     }
   };
 
-  const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const { email, password, username } = formData;
-
   return (
-    <div>
-      {/* <Nav /> */}
-      <div className="register-box">
-        <h1>Register</h1>
-        <form className="register-form" onSubmit={onSubmit}>
-          <div>
-            <label className="register-label" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="register-input"
-              type="email"
-              name="email"
-              value={email}
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div>
-            <label className="register-label" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="register-input"
-              type="password"
-              name="password"
-              value={password}
-              onChange={onChange}
-              required
-            />
-          </div>
-          <div>
-            <label className="register-label" htmlFor="username">
-              Username
-            </label>
-            <input
-              className="register-input"
-              type="text"
-              name="username"
-              value={username}
-              onChange={onChange}
-              required
-            />
-          </div>
-          <input className="register-input" type="submit" value="Register" />
-        </form>
-      </div>
-    </div>
+    <MainContainer onSubmit={onSubmit}>
+      <SignUpText>Sign Up</SignUpText>
+      <InputContainer>
+        <StyledInput
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <StyledInput
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <StyledInput
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </InputContainer>
+      <ButtonContainer>
+        <StyledSignup type="submit">Sign Up</StyledSignup>
+      </ButtonContainer>
+      <LogIn>Already have an account? Login here!</LogIn>
+    </MainContainer>
   );
 };
 
