@@ -55,8 +55,9 @@ const Grid = styled.div`
 
 const Card = styled.div`
   img {
-    width: 50%;
+    width: 100%;
     border-radius: 2rem;
+    padding: 1rem;
   }
   a {
     text-decoration: none;
