@@ -81,7 +81,7 @@ const Card = styled.div`
     img {
         width: 20vw;
         border-radius: 2rem;
-        justify-content: center;
+        align-items: center;
     }
     a {
         text-decoration: none;
@@ -93,7 +93,8 @@ const Card = styled.div`
     button {
         align-items: center;
         border-radius: 0.25rem;
-        padding: 0.5rem
+        padding: 0.5rem;
+        margin: 0.5rem;
     }
 `;
 
