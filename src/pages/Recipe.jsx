@@ -35,43 +35,45 @@ const Recipe = () => {
   };
 
   return (
-    <div>
-      {/* <Nav />
-      <SearchRecipes /> */}
-      <div className="recipe-details">
-        <div className="image">
-          <h2>{recipe.title}</h2>
-          <div className="recipe-image">
-            <img src={recipe.image} alt={recipe.title} />
-          </div>
+    <>
+      <div>
+        {/* <Nav />
+        <SearchRecipes /> */}
+        <div className="recipe-details">
+          <div className="image">
+            <h2>{recipe.title}</h2>
+            <div className="recipe-image">
+              <img src={recipe.image} alt={recipe.title} />
+            </div>
 
-          <Rating rating={recipe.rating} />
-        </div>
-        <div className="recipe-info">
-          <button onClick={handleIngredientsClick}>Ingredients</button>
-          <button onClick={handleInstructionsClick}>Instructions</button>
-          {showIngredients && (
-            <ul>
-              {recipe.ingredients &&
-                recipe.ingredients.map((ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
-                ))}
-            </ul>
-          )}
-          {showInstructions && (
-            <ol>
-              {recipe.instructions &&
-                recipe.instructions.map((instruction) => (
-                  <li key={instruction}>{instruction}</li>
-                ))}
-            </ol>
-          )}
-          <p>Category: {recipe.category}</p>
-          <p>Cooking Time: {recipe.cookingTime} minutes</p>
-          <p>Serving Size: {recipe.servingSize}</p>
+            <Rating rating={recipe.rating} />
+          </div>
+          <div className="recipe-info">
+            <button onClick={handleIngredientsClick}>Ingredients</button>
+            <button onClick={handleInstructionsClick}>Instructions</button>
+            {showIngredients && (
+              <ul>
+                {recipe.ingredients &&
+                  recipe.ingredients.map((ingredient) => (
+                    <li key={ingredient}>{ingredient}</li>
+                  ))}
+              </ul>
+            )}
+            {showInstructions && (
+              <ol>
+                {recipe.instructions &&
+                  recipe.instructions.map((instruction) => (
+                    <li key={instruction}>{instruction}</li>
+                  ))}
+              </ol>
+            )}
+            <p>Category: {recipe.category}</p>
+            <p>Cooking Time: {recipe.cookingTime} minutes</p>
+            <p>Serving Size: {recipe.servingSize}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

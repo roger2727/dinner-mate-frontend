@@ -50,6 +50,9 @@ const MyRecipes = () => {
   }
 
     return (
+      <>
+        <Navbar />
+        <h1>My Recipes!</h1>
         <Grid>
             {myRecipes.map((recipes) => {
                 return (
@@ -64,6 +67,7 @@ const MyRecipes = () => {
                 )
         })}
         </Grid>
+      </>
     )
 }
 
