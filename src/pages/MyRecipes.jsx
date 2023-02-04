@@ -79,8 +79,7 @@ const Grid = styled.div`
 
 const Card = styled.div`
     img {
-        width: 35vw;
-        height: 35vw;
+        width: 20vw;
         border-radius: 2rem;
 
     }
