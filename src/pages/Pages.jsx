@@ -18,15 +18,15 @@ const Pages = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mealTime/:category" element={<><Navbar /><MealTime /></>} />
-        <Route path="/searched/:search" element={<Searched />} />
-        <Route path="/recipe/:id" element={<Recipe />} />
+        <Route path="/searched/:search" element={<><Navbar /><Searched /></>} />
+        <Route path="/recipe/:id" element={<><Navbar /><Recipe /></>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/addrecipe" element={<><Navbar /><AddRecipe /></>} />
+        <Route path="/addrecipe" element={<><Navbar /><AddRecipe /><AddImage /></>} />
         <Route path="/myrecipes" element={<><Navbar /><MyRecipes /></>} />
-        <Route path="/editrecipe/:recipeId" element={<EditRecipe />} />
-        <Route path="add-image/:recipeId" element={<AddImage />} />
-        <Route path="search-title/:title" element={<Searched />} />
+        <Route path="/editrecipe/:recipeId" element={<><Navbar /><EditRecipe /></>} />
+        <Route path="add-image/:recipeId" element={<><Navbar /><AddImage /></>} />
+        <Route path="search-title/:title" element={<><Navbar /><Searched /></>} />
       </Routes>
     </>
   );
