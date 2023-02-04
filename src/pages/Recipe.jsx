@@ -37,7 +37,7 @@ const Recipe = () => {
         <div className="recipe-details">
           <div className="image">
             <h2>{recipe.title}</h2>
-            <div className="recipe-image" >
+            <div className="recipe-image">
               <img src={recipe.image} alt={recipe.title} />
             </div>
 
