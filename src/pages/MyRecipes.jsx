@@ -60,7 +60,7 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
-                            {/* <Rating rating={recipes.rating} /> */}
+                            <Rating rating={recipes.rating} style={{justifyContent: "left"}}/>
                         </Link>
                         <button onClick={() => handleUpdate(recipes._id)} >Edit</button>
                         <button onClick={() => handleDelete(recipes._id)} >Delete</button>
@@ -82,7 +82,6 @@ const Card = styled.div`
     img {
         width: 100%;
         border-radius: 2rem;
-        align-items: center;
     }
     a {
         text-decoration: none;
