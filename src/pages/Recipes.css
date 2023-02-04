@@ -9,6 +9,7 @@
 
 .recipe-image {
   max-width: 30vw;
+  max-height: 30vw;
   border-radius: 1.5rem;
   border: 2px solid #234930;
   object-fit: contain;
