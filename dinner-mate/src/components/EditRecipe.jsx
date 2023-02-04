@@ -166,7 +166,7 @@ const UpdateRecipe = () => {
           body: JSON.stringify(recipe),
         }
       );
-      navigate(`/public/${recipeId}`);
+      navigate(`/recipe/${recipeId}`);
     } catch (err) {
       console.error(err);
     }
