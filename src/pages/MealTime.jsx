@@ -61,6 +61,7 @@ const Grid = styled.div`
 
 const Card = styled.div`
   img {
+    object-fit: contain;
     width: 20vw;
     border-radius: 2rem;
     border: 2px solid #234930;
@@ -69,7 +70,7 @@ const Card = styled.div`
     text-decoration: none;
   }
   h4 {
-    text-align: right;
+    text-align: left;
     padding: 1rem;
   }
 `;
