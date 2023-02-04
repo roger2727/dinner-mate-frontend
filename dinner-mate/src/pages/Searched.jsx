@@ -26,7 +26,7 @@ const RecipeTitle = () => {
       <h2>Recipes with title {title}</h2>
       <div className="image-container">
         {recipes.map((recipe) => (
-          <Link key={recipe._id} to={`/${recipe._id}`}>
+          <Link key={recipe._id} to={`/recipe/${recipe._id}`}>
             <img src={recipe.image} alt={recipe.title} />
           </Link>
         ))}
