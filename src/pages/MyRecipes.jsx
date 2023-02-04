@@ -56,13 +56,13 @@ const MyRecipes = () => {
         <Grid>
             {myRecipes.map((recipes) => {
                 return (
-                    <Card key={recipes._id} style={{maxHeight: "30vh", objectFit: "scale-down"}}>
+                    <Card key={recipes._id}>
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
                         </Link>
-                        <button onClick={() => handleUpdate(recipes._id)} style={{justifyContent: "center"}}>Edit</button>
-                        <button onClick={() => handleDelete(recipes._id)} style={{justifyContent: "center"}}>Delete</button>
+                        <button onClick={() => handleUpdate(recipes._id)} >Edit</button>
+                        <button onClick={() => handleDelete(recipes._id)} >Delete</button>
                     </Card>
                 )
         })}
@@ -79,7 +79,8 @@ const Grid = styled.div`
 
 const Card = styled.div`
     img {
-        width: 100%;
+        width: 35vw;
+        height: 35vw;
         border-radius: 2rem;
 
     }
@@ -89,6 +90,10 @@ const Card = styled.div`
     h4 {
         text-align: center;
         padding: 1rem;
+    }
+    button {
+        justify-content: center;
+        background-color: green;
     }
 `;
 
