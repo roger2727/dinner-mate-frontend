@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar"
 
 const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -41,7 +40,6 @@ const AddImage = () => {
 
   return (
     <>
-      <Navbar />
       <div>
         <div className="upload-box">
           <p>please upload a image for your recipe</p>

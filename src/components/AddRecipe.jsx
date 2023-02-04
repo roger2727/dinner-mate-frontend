@@ -246,7 +246,6 @@
 // export default AddRecipe;
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar"
 // import "./AddRecipe.css";
 
 const AddRecipe = () => {
@@ -315,9 +314,8 @@ const AddRecipe = () => {
 
   return (
     <div>
-      <Navbar />
       <h1 className="add-title">Add Recipe</h1>
-      <div className="form-box" style={{"justify-content": "center"}}>
+      <div className="form-box">
         <form onSubmit={onSubmit}>
           <div className="left-half">
             <div>
