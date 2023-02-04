@@ -317,7 +317,7 @@ const AddRecipe = () => {
     <div>
       <Navbar />
       <h1 className="add-title">Add Recipe</h1>
-      <div className="form-box">
+      <div className="form-box" style={{"justify-content": "center"}}>
         <form onSubmit={onSubmit}>
           <div className="left-half">
             <div>
