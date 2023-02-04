@@ -60,7 +60,7 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
-                            <Rating rating={recipes.rating} style={{justifyContent: "left"}}/>
+                            <Rating rating={recipes.rating} style={{alignItems: "left"}}/>
                         </Link>
                         <button onClick={() => handleUpdate(recipes._id)} >Edit</button>
                         <button onClick={() => handleDelete(recipes._id)} >Delete</button>
