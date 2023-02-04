@@ -246,7 +246,7 @@
 // export default AddRecipe;
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Nav from "./Nav";
+import Navbar from "../components/Navbar"
 // import "./AddRecipe.css";
 
 const AddRecipe = () => {
@@ -315,7 +315,7 @@ const AddRecipe = () => {
 
   return (
     <div>
-      {/* <Nav /> */}
+      <Navbar />
       <h1 className="add-title">Add Recipe</h1>
       <div className="form-box">
         <form onSubmit={onSubmit}>
