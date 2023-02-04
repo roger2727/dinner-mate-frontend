@@ -286,8 +286,7 @@ const AddRecipe = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://dinner-mate-backend-production.up.railway.app/recipes/add",
+      const response = await fetch('https://dinner-mate-backend-production.up.railway.app/recipes/add',
         {
           method: "POST",
           headers: {

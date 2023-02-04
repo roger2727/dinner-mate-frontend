@@ -51,6 +51,7 @@ const Recipe = () => {
           </Button>
         </Info>
       </DetailWrapper>
+      
     </>
   );
 };
