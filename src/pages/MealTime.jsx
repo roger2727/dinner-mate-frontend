@@ -63,14 +63,13 @@ const Card = styled.div`
   img {
     width: 20vw;
     border-radius: 2rem;
-    padding: 1rem;
     border: 2px solid #234930;
   }
   a {
     text-decoration: none;
   }
   h4 {
-    text-align: center;
+    text-align: right;
     padding: 1rem;
   }
 `;

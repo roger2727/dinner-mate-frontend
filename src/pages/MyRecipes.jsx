@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Navbar from "../components/Navbar"
+import Rating from "../components/StarRating";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const MyRecipes = () => {
@@ -60,6 +60,7 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
+                            <Rating rating={recipes.rating} />
                         </Link>
                         <button onClick={() => handleUpdate(recipes._id)} >Edit</button>
                         <button onClick={() => handleDelete(recipes._id)} >Delete</button>
