@@ -1,58 +1,76 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import StarRating from "../components/StarRating";
-import Navbar from "../components/Navbar";
-import Search from "../components/Search";
-import Category from "../components/Category";
-import Favourite from "../components/Favourite";
+import Rating from "../components/StarRating";
+// import Navbar from "../components/Navbar";
+// import Search from "../components/Search";
+// import Category from "../components/Category";
 
 const Recipe = () => {
   const { id } = useParams();
-  const [details, setDetails] = useState({});
-
-  const [activeTab, setActiveTab] = useState("instructions");
-
-  const fetchDetails = async () => {
-    const res = await fetch(
-      `https://dinner-mate-backend-production.up.railway.app/public/${id}`
-    );
-    const data = await res.json();
-    setDetails(data.recipe);
-  };
+  const [recipe, setRecipe] = useState({});
+  const [showIngredients, setShowIngredients] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
 
   useEffect(() => {
-    fetchDetails();
+    async function fetchData() {
+      const res = await fetch(
+        `https://dinner-mate-backend-production.up.railway.app/public/${id}`
+      );
+      const data = await res.json();
+      setRecipe(data.recipe);
+    }
+    fetchData();
   }, [id]);
+
+  const handleIngredientsClick = () => {
+    setShowIngredients(!showIngredients);
+    setShowInstructions(false);
+  };
+
+  const handleInstructionsClick = () => {
+    setShowInstructions(!showInstructions);
+    setShowIngredients(false);
+  };
+
   return (
-    <>
-      <Navbar />
-      <Search />
-      <Category />
-      <DetailWrapper>
-        <div>
-          <h2>{details.title}</h2>
-          <img src={details.image} width="556" height="370" alt="" />
-          <StarRating rating={details.rating} />
-          <Favourite />
+    <div>
+      {/* <Nav />
+      <SearchRecipes /> */}
+      <div className="recipe-details">
+        <div className="image">
+          <h2>{recipe.title}</h2>
+          <div className="recipe-image">
+            <img src={recipe.image} alt={recipe.title} />
+          </div>
+
+          <Rating rating={recipe.rating} />
         </div>
-        <Info>
-          <Button
-            className={activeTab === "instructions" ? "active" : ""}
-            onClick={() => setActiveTab("instructions")}
-          >
-            Instructions
-          </Button>
-          <Button
-            className={activeTab === "ingredients" ? "active" : ""}
-            onClick={() => setActiveTab("ingredients")}
-          >
-            Ingredients
-          </Button>
-        </Info>
-      </DetailWrapper>
-      
-    </>
+        <div className="recipe-info">
+          <button onClick={handleIngredientsClick}>Ingredients</button>
+          <button onClick={handleInstructionsClick}>Instructions</button>
+          {showIngredients && (
+            <ul>
+              {recipe.ingredients &&
+                recipe.ingredients.map((ingredient) => (
+                  <li key={ingredient}>{ingredient}</li>
+                ))}
+            </ul>
+          )}
+          {showInstructions && (
+            <ol>
+              {recipe.instructions &&
+                recipe.instructions.map((instruction) => (
+                  <li key={instruction}>{instruction}</li>
+                ))}
+            </ol>
+          )}
+          <p>Category: {recipe.category}</p>
+          <p>Cooking Time: {recipe.cookingTime} minutes</p>
+          <p>Serving Size: {recipe.servingSize}</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
