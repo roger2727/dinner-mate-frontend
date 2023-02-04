@@ -22,7 +22,7 @@ const Pages = () => {
         <Route path="/recipe/:id" element={<><Navbar /><Recipe /></>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/addrecipe" element={<><Navbar /><AddRecipe /><AddImage /></>} />
+        <Route path="/addrecipe" element={<AddRecipe />} />
         <Route path="/myrecipes" element={<><Navbar /><MyRecipes /></>} />
         <Route path="/editrecipe/:recipeId" element={<><Navbar /><EditRecipe /></>} />
         <Route path="add-image/:recipeId" element={<><Navbar /><AddImage /></>} />
