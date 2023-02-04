@@ -25,6 +25,7 @@ const Pages = () => {
         <Route path="/myrecipes" element={<MyRecipes />} />
         <Route path="/editrecipe" element={<EditRecipe />} />
         <Route path="add-image/:recipeId" element={<AddImage />} />
+        <Route path="search-title/:title" element={<Searched />} />
       </Routes>
     </>
   );

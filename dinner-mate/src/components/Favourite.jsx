@@ -6,9 +6,20 @@ import styled from 'styled-components'
 const Favourite = () => {
     const [isFilled, setIsFilled] = useState(false)
 
-    const handleClick = () => {
-        setIsFilled(!isFilled)
+    const handleClick = async () => {
+        try {
+            const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/favourite/${recipeId}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            setIsFilled(res.data.isFav)
+        }
+        catch {
+            console.error(err)
+        }
     }
+
 
     return (
         <Heart size={32} isFilled={isFilled} onClick={handleClick} />
