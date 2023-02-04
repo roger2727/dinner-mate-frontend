@@ -32,19 +32,21 @@ const MealTime = () => {
   }, [category]);
 
   return (
-    <Grid>
-      <h1>${category}</h1>
-      {mealTime.map((recipe) => {
-        return (
-          <Card key={recipe._id}>
-            <Link to={"/recipe/" + recipe._id}>
-              <img src={recipe.image} alt="" />
-              <h4>{recipe.title}</h4>
-            </Link>
-          </Card>
-        );
-      })}
-    </Grid>
+    <>
+    <h1>{category}</h1>
+      <Grid>
+        {mealTime.map((recipe) => {
+          return (
+            <Card key={recipe._id}>
+              <Link to={"/recipe/" + recipe._id}>
+                <img src={recipe.image} alt="" />
+                <h4>{recipe.title}</h4>
+              </Link>
+            </Card>
+          );
+        })}
+      </Grid>
+    </>
   );
 };
 
