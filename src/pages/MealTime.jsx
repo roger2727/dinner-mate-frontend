@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Navbar from "../components/Navbar"
+import "./Recipes.css"
 
 import { Link, useParams } from "react-router-dom";
 
@@ -33,20 +35,20 @@ const MealTime = () => {
 
   return (
     <>
-    <Navbar />
-    <h1>{category} Recipes!</h1>
-      <Grid>
-        {mealTime.map((recipe) => {
-          return (
-            <Card key={recipe._id}>
-              <Link to={"/recipe/" + recipe._id}>
-                <img src={recipe.image} alt="" />
-                <h4>{recipe.title}</h4>
-              </Link>
-            </Card>
-          );
-        })}
-      </Grid>
+      <Navbar />
+      <h1>{category} Recipes!</h1>
+        <Grid>
+          {mealTime.map((recipe) => {
+            return (
+              <Card key={recipe._id}>
+                <Link to={"/recipe/" + recipe._id}>
+                  <img src={recipe.image} alt="" />
+                  <h4>{recipe.title}</h4>
+                </Link>
+              </Card>
+            );
+          })}
+        </Grid>
     </>
   );
 };

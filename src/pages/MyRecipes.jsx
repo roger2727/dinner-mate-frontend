@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Navbar from "../components/Navbar"
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const MyRecipes = () => {
