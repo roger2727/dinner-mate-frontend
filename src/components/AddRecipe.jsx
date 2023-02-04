@@ -71,64 +71,39 @@ const AddRecipe = () => {
 
   const handleCategorySelection = (selectedCategory) => {
     setCategory(selectedCategory);
+    setFormData({ ...formData, category: selectedCategory });
   };
 
-//   const onChange = (e) => {
-//     setAddRecipe({ ...addRecipe, [e.target.name]: e.target.value });
-//   };
-
-//   const onSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const response = await fetch(
-//         //url
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${localStorage.getItem("token")}`,
-//           },
-//           body: JSON.stringify({
-//             ...addRecipe,
-//             ingredients: addRecipe.ingredients.split("\n"),
-//             instructions: addRecipe.instructions.split("\n"),
-//             category,
-//             createdAt: new Date(),
-//           }),
-//         }
-//       );
-//       if (response.ok) {
-//         console.log(response);
-//         const json = await response.json();
-//         setRecipeId(json.recipe._id);
-//         navigate(`/add-image/${json.recipe._id}`);
-//       } else {
-//         const error = await response.json();
-//         console.error(error);
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
 
   return (
     <FormContainer onSubmit={onSubmit}>
       <FormTitle>Add your own delight here!</FormTitle>
-        <div>
-          <label htmlFor="category">Category</label>
-          <select
-            name="category"
-            value={formData.category}
-            onChange={onChange}
-            required
-          >
-            <option value="">Select a category</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dessert">Dessert</option>
-          </select>
-        </div>
+      <div style={{ display: "flex" }}>
+        <CategoryBtn
+          selected={category === "Breakfast"}
+          onClick={() => handleCategorySelection("Breakfast")}
+        >
+          Breakfast
+        </CategoryBtn>
+        <CategoryBtn
+          selected={category === "Lunch"}
+          onClick={() => handleCategorySelection("Lunch")}
+        >
+          Lunch
+        </CategoryBtn>
+        <CategoryBtn
+          selected={category === "Dinner"}
+          onClick={() => handleCategorySelection("Dinner")}
+        >
+          Dinner
+        </CategoryBtn>
+        <CategoryBtn
+          selected={category === "Dessert"}
+          onClick={() => handleCategorySelection("Dessert")}
+        >
+          Dessert
+        </CategoryBtn>
+      </div>
       <FormInput
         type="text"
         name="title"
