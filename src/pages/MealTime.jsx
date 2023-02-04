@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Navbar from "../components/Navbar"
+import Rating from "../components/StarRating";
 import "./Recipes.css"
 
 import { Link, useParams } from "react-router-dom";
@@ -43,6 +43,7 @@ const MealTime = () => {
                 <Link to={"/recipe/" + recipe._id}>
                   <img src={recipe.image} alt="" />
                   <h4>{recipe.title}</h4>
+                  <Rating rating={recipe.rating} />
                 </Link>
               </Card>
             );
@@ -63,7 +64,7 @@ const Card = styled.div`
     width: 20vw;
     border-radius: 2rem;
     padding: 1rem;
-    border: 2px solid blue;
+    border: 2px solid #234930;
   }
   a {
     text-decoration: none;
