@@ -80,7 +80,7 @@ const Grid = styled.div`
 
 const Card = styled.div`
     img {
-        width: 20vw;
+        width: 100%;
         border-radius: 2rem;
         align-items: center;
     }
