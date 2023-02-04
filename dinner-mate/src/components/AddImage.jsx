@@ -18,7 +18,7 @@ const AddImage = () => {
       const formData = new FormData();
       formData.append("image", selectedImage);
       const response = await fetch(
-        `https://dm-backend-test-production.up.railway.app/recipes/upload-image/${recipeId}?width=300`,
+        `https://dinner-mate-backend-production.up.railway.app/recipes/upload-image/${recipeId}`,
         {
           method: "POST",
           body: formData,
@@ -28,7 +28,7 @@ const AddImage = () => {
         }
       );
       if (response.ok) {
-        navigate(`/${recipeId}`);
+        navigate(`/add-image/${recipeId}`);
       } else {
         const error = await response.json();
         console.error(error);
