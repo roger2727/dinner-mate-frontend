@@ -30,7 +30,7 @@ const MyRecipes = () => {
   }, [userId]);
 
   const handleUpdate = (recipeId) => {
-    Navigate(`/update/${recipeId}`);
+    Navigate(`/editrecipe/${recipeId}`);
   }
 
   const handleDelete = async (recipeId) => {
@@ -56,7 +56,7 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
-                            <button onClick={() => handleUpdate(recipes._id)}><Link to={"/editrecipe/" +recipes._id}>Edit</Link></button>
+                            <button onClick={() => handleUpdate(recipes._id)}>Edit</button>
                             <button onClick={() => handleDelete(recipes._id)}>Delete</button>
                         </Link>
                     </Card>
