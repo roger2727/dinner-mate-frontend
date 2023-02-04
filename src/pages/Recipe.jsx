@@ -36,7 +36,6 @@ const Recipe = () => {
 
   return (
     <>
-      <Navbar />
       <div>
         {/* <Nav />
         <SearchRecipes /> */}
