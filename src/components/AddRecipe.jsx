@@ -315,7 +315,7 @@ const AddRecipe = () => {
   return (
     <div>
       <h1 className="add-title">Add Recipe</h1>
-      <div className="form-box" style={{backgroundColor: "grey", justifyContent: "center", borderRadius: "0.5rem"}}>
+      <div className="form-box" style={{backgroundColor: "grey", textAlign: "center", borderRadius: "0.5rem", padding: "1rem"}}>
         <form onSubmit={onSubmit}>
           <div className="left-half">
             <div>
