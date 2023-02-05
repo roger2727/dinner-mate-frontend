@@ -178,15 +178,17 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledLogin = styled.button`
-  background: #f27121;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  width: 50%;
-  height: 3rem;
-  color: white;
-  cursor: pointer;
-  border-radius: 2rem;
-  border: none;
+    background: #f27121;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    width: 50%;
+    height: 3rem;
+    color: white;
+    cursor: pointer;
+    border-radius: 2rem;
+    border: none;
+    margin-top: 2rem;
+
 `;
 
 const Slink = styled(Link)`
