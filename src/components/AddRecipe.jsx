@@ -10,12 +10,7 @@ const AddRecipe = () => {
   const handleSubmit = () => {
     setSubmitClicked(true);
   };
-  const [showButton, setShowButton] = useState(true);
 
-  const handleAddRecipe = () => {
-    setShowButton(false);
-    onSubmit();
-  };
   const [formData, setFormData] = useState({
     title: "",
     ingredients: [],
@@ -177,9 +172,7 @@ const AddRecipe = () => {
           <option value="4">4</option>
           <option value="5">5</option>
         </FormSelect>
-        {showButton && (
-          <FormButton onClick={handleAddRecipe}>Add Recipe</FormButton>
-        )}
+        <FormButton type="submit">Add Recipe</FormButton>
       </FormContainer>
     </>
   );
