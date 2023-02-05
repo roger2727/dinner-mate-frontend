@@ -10,6 +10,7 @@ const RecipeTitle = () => {
   const [recipes, setRecipes] = useState([]);
   const { title } = useParams();
 
+    // fetches results of a search by recipe title.
   useEffect(() => {
     async function fetchData() {
       try {
@@ -25,6 +26,7 @@ const RecipeTitle = () => {
     fetchData();
   }, [title]);
 
+  // returns seached results by search bar results.
   return (
     <>
       <Navbar />
@@ -50,6 +52,7 @@ const RecipeTitle = () => {
   );
 };
 
+// styling.
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(20rem, 1fr));

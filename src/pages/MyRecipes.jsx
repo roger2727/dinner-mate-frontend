@@ -14,6 +14,7 @@ const MyRecipes = () => {
 
   const navigate = useNavigate()
 
+  //fetches all recipes that are currently saved and created by the user, checks ID first to ensure it returns that persons recipes.
   const getMyRecipes = async () => {
     try {
       const res = await fetch(
@@ -35,10 +36,12 @@ const MyRecipes = () => {
   useEffect(() => {
     getMyRecipes();
   }, [userId]);
+  //update component and navigates the user to edit their recipe.
 
   const handleUpdate = (recipeId) => {
     navigate(`/editrecipe/${recipeId}`);
   }
+  //delete component post request. 
 
   const handleDelete = async (recipeId) => {
     try {
@@ -54,7 +57,7 @@ const MyRecipes = () => {
       console.error(err)
     }
   }
-
+    // returns components that display users' created recipes. Has the option to edit and delete each recipe using map. 
 
     return (
       <>
@@ -86,6 +89,7 @@ const MyRecipes = () => {
     )
 }
 
+// styling
 const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, minmax(20rem, 1fr));

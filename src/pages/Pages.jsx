@@ -12,6 +12,7 @@ import MyRecipes from "./MyRecipes";
 import EditRecipe from "../components/EditRecipe";
 import AddImage from "../components/AddImage";
 
+// one below top level component to render all the pages and components. 
 const Pages = () => {
   return (
     <>

@@ -14,6 +14,7 @@ const Recipe = () => {
 
   const [activeTab, setActiveTab] = useState("instructions");
 
+  //fetches individual recipe by id.
   const fetchDetails = async () => {
     const res = await fetch(
       `https://dinner-mate-backend-production.up.railway.app/public/${id}`
@@ -26,6 +27,7 @@ const Recipe = () => {
     fetchDetails();
   }, [id])
 
+  //returns recipe details, can toggle ingredients and instructions.
   return (
     <>
       <Navbar />
@@ -72,6 +74,7 @@ const Recipe = () => {
   );
 };
 
+// styling
 const DetailWrapper = styled.div`
   margin-top: 10rem;
   margin-bottom: 5rem;

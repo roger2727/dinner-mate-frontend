@@ -6,11 +6,12 @@ import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 
 
-
+//displays meal time selected by category.
 const MealTime = () => {
   const [mealTime, setMealTime] = useState([]);
   const { category } = useParams();
 
+  //fetches api data to filter recipe by category
   useEffect(() => {
     fetch(
       `https://dinner-mate-backend-production.up.railway.app/public/category/${category}`
@@ -20,6 +21,7 @@ const MealTime = () => {
       .catch((err) => console.log(err));
   }, [category]);
 
+  // returns components to display on this page, and maps out a recipe to each page. 
   return (
     <>
       <Navbar />
@@ -42,6 +44,7 @@ const MealTime = () => {
   );
 };
 
+// styling for components.
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(20rem, 1fr));

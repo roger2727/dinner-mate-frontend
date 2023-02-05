@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar"
 
 
 import React from "react";
-
+// renders home page with components created.
 function Home() {
 
     return (

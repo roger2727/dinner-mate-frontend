@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./Navbar";
 
+// add image component that user can upload after they have added a recipe.
 const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();
   const [isUploading, setIsUploading] = useState(false);
