@@ -10,7 +10,11 @@ const AddRecipe = () => {
   const handleSubmit = () => {
     setSubmitClicked(true);
   };
+  const [showButton, setShowButton] = useState(true);
 
+  const handleAddRecipe = () => {
+    setShowButton(false);
+  };
   const [formData, setFormData] = useState({
     title: "",
     ingredients: [],
@@ -42,7 +46,8 @@ const AddRecipe = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://dinner-mate-backend-production.up.railway.app/recipes/add',
+      const response = await fetch(
+        "https://dinner-mate-backend-production.up.railway.app/recipes/add",
         {
           method: "POST",
           headers: {
@@ -74,7 +79,6 @@ const AddRecipe = () => {
     setCategory(selectedCategory);
     setFormData({ ...formData, category: selectedCategory });
   };
-
 
   return (
     <>
@@ -172,9 +176,11 @@ const AddRecipe = () => {
           <option value="4">4</option>
           <option value="5">5</option>
         </FormSelect>
-        <FormButton type="submit">Add Recipe</FormButton>
+        {showButton && (
+          <FormButton onClick={handleAddRecipe}>Add Recipe</FormButton>
+        )}
       </FormContainer>
-    </>  
+    </>
   );
 };
 const CategoryBtn = styled.button`
@@ -194,11 +200,11 @@ const CategoryBtn = styled.button`
   height: 6rem;
   cursor: pointer;
   transform: scale(0.8);
-  @media (max-width: 600px) { 
-    width: 4rem; 
-    height: 4rem; 
+  @media (max-width: 600px) {
+    width: 4rem;
+    height: 4rem;
     margin-right: 1rem;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
   &:hover {
     background: linear-gradient(to right, #f27121, #e94057);
@@ -232,12 +238,11 @@ const FormInput = styled.input`
   color: #333333;
   border: none;
   border-bottom: 1.5px solid #888888;
-  &:focus { 
-    outline: none; 
+  &:focus {
+    outline: none;
     border-bottom: 1.5px solid #f27121;
     transition: border-bottom 0.5s ease-in-out;
   }
-
 `;
 
 const FormTextarea = styled.textarea`
@@ -249,8 +254,8 @@ const FormTextarea = styled.textarea`
   border: none;
   min-height: 100px;
   border-bottom: 1.5px solid #888888;
-  &:focus { 
-    outline: none; 
+  &:focus {
+    outline: none;
     border-bottom: 1.5px solid #f27121;
     transition: border-bottom 0.5s ease-in-out;
   }
@@ -265,11 +270,10 @@ const FormSelect = styled.select`
   color: #333333;
   border: none;
   border-bottom: 1px solid #888888;
-  &:focus { 
+  &:focus {
     transition: border-bottom 0.2s ease-in-out;
     outline: none;
     border-bottom: 1.5px solid #f27121;
-
   }
 `;
 
@@ -290,6 +294,5 @@ const FormButton = styled.button`
     width: 50%;
   }
 `;
-
 
 export default AddRecipe;
