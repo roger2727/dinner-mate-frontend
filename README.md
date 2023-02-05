@@ -4,6 +4,14 @@
 
 link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-stack-app).
 
+link to deployed app [_here_](https://dinner-mate-frontend-production.up.railway.app/).
+
+link to frontend repo [_here_](https://github.com/roger2727/dinner-mate-frontend).
+
+link to backend repo [_here_](https://github.com/roger2727/dinner-mate-backend).
+
+link to documentation repo [_here_](https://github.com/roger2727/MitchellRoger_T3A2-A).
+
 ## Table of Contents
 
 - [full stack app](#full-stack-app)
@@ -15,20 +23,27 @@ link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-s
 - [**Application Architecture Diagram**](#application-architecture-diagram)
 - [**User Stories**](#user-stories)
 - [**Implementation plan**](#implementation-plan)
-  - [**screenshots**](#screenshots)
+  - [**Screenshots**](#screenshots)
 - [**Wireframes**](#wireframes)
 - [Testing](#tests)
   - [Development testing](#development-testing)
   - [Production testing](#production-testing)
+- [**Slide Deck**](#slide-deck)
+
+- [**Tests**](#tests)
+- [Development testing](#development-testing)
+  - [Server side](#server-side)
+- [Production testing](#production-testing)
 - [**References**](#references)
 
+<br>
 <br>
 
 # **General Information**
 
 - **Purpose**
 
-  The purpose of this app is to provide a centralised locationss for individuals to store and access their favorite recipes in one convenient place. The app allows users to easilyd filter recipes based on specific ingredients or dietary restrictions, making meal planning and recipe discovery more efficient. The user-friendly interface makes it easy to navigate through your recipe collection and plan your meals for the week. With this app, busy working professionals, food enthusiasts, or anyone looking to keep their recipe collection organized, can access their recipes on the go, and never have to worry about losing their favorite recipes again. This app is designed to make meal planninge and recipe discovery a breeze and help you to create delicious and healthy meals.
+  The purpose of this app is to provide a centralised locations for individuals to store and access their favorite recipes in one convenient place. The app allows users to easilyd filter recipes based on specific ingredients or dietary restrictions, making meal planning and recipe discovery more efficient. The user-friendly interface makes it easy to navigate through your recipe collection and plan your meals for the week. With this app, busy working professionals, food enthusiasts, or anyone looking to keep their recipe collection organized, can access their recipes on the go, and never have to worry about losing their favorite recipes again. This app is designed to make meal planninge and recipe discovery a breeze and help you to create delicious and healthy meals.
 
 - **Functionality / features**
 
@@ -40,7 +55,7 @@ link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-s
 
 - **Target audience**
 
-  The target audience for this app would be busy working professionals, food enthusiasts and families. These groups of people have difdferent eeds but they all share a common goal, which is to make meal planning and recipe discovery easy and efficient.
+  The target audience for this app would be busy working professionals, food enthusiasts and families. These groups of people have different needs but they all share a common goal, which is to make meal planning and recipe discovery easy and efficient.
 
   Busy working professionals often have limited time to plan and prepare meals, and they would benefit greatly from an app that allows them to easily find and save recipes, and plan their meals in advance. This app's search and filter functionality and meal planning capabilities would be especially useful for this group, ass they could quickly find recipes that fit their dietary restrictions and schedule.
 
@@ -181,13 +196,21 @@ We also had a daily stand up where we discussed what to do next, what we are wor
 Overall, this process allowed for clear communication and organization within the team, and helped us ensure that all tasks were completed in a timely manner. It also allowed each of us to focus on our specific tasks and not get overwhelmed by the entire project.
 <br>
 
-### **screenshots**
+### **Screenshots**
 
 ![Example screenshot](/docs/trello/trello.png)
 ![Screenshots](/docs/trello/Trello-3.png)
 ![Screenshots](/docs/trello/Trello-4.png)
 ![Screenshots](/docs/trello/Trello-5.png)
 ![Screenshots](docs/trello/Trello-6.png)
+![Screenshots](docs/trello/7.png)
+![Screenshots](docs/trello/8.png)
+![Screenshots](docs/trello/9.png)
+![Screenshots](docs/trello/10.png)
+![Screenshots](docs/trello/11.png)
+![Screenshots](docs/trello/12.png)
+![Screenshots](docs/trello/13.png)
+![Screenshots](docs/trello/finallone.png)
 
 # **Wireframes**
 
@@ -261,6 +284,22 @@ The design ethos for these wireframes was to make navigation between all compone
 <br>
 
 In terms of agile methodology. Each component fits our user stories that have been outlined in this document. Each user story has been broken down into tasks and components which satisfy the user story criteria. The build of these wireframes will be done in a methodical approach whereby the components with the highest amount of re-usability that satisfy multiple user story criterion will be done first, and niche components specific to some screens added later in the mix.
+
+<br>
+<br>
+
+# <<<<<<< HEAD
+
+# **Slide Deck**
+
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-1.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-2.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-3.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-4.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-5.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-6.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-7.png)
+![Slide Deck](docs/slide-deck/DinnerMate%20Slide%20Deck-8.png)
 
 <br>
 <br>
@@ -538,6 +577,9 @@ Test Objective: To test the functionality of the UserModel for saving a user.
 
 # Production testing
 
+Once the website is deemed functional, I start my manual testing process by creating cards in Trello to keep track of all the elements that need to be tested. I then proceed to perform the tests and document the results, which I label as either "pass," "fail," or "pass with issues." The labeling of "pass with issues" indicates that although the test itself has passed, there may be other underlying issues that need to be addressed. This comprehensive documentation of test results is crucial as it enables the whole team to stay informed about what has been tested and what actions, if any, need to be taken. It is an efficient way to ensure that the website is functioning optimally and that any potential issues are identified and addressed in a timely manner.
+![Screenshots](docs/testing.png)
+
 1. # Test Case : Register user
 
 Test Case Description: Verify the registration functionality of the site
@@ -554,7 +596,7 @@ Test Case Description: Verify the registration functionality of the site
           - The user should be redirected to the login page
           - The user's email address and password should be stored in the database.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
   <br>
   <br>
@@ -575,7 +617,7 @@ Test Case Description: Verify the registration functionality of the site
           - The form should display an error message for each required field that was left empty.
           - The user should not be able to register until all required fields have been filled in.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
       <br>
       <br>
@@ -595,7 +637,7 @@ Test Case Description: Verify the registration functionality of the site
 
           - The user should be redirected to the home page
 
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
     <br>
@@ -616,7 +658,7 @@ Test Case Description: Verify the registration functionality of the site
           - The form should display an error message indicating that the login was unsuccessful.
           - The user should not be able to log in until a valid email address and password have been entered.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
     <br>
@@ -638,7 +680,7 @@ Test Case Description: Verify the registration functionality of the site
           - The user should be redirected to the login page
           - The user's session should be ended, and they should no longer be able to access the site without logging in again.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
     <br>
@@ -658,7 +700,7 @@ Test Case Description: Verify the registration functionality of the site
           - The page should display a list of all Breakfast recipes
           - The selected category button should have a different visual indicator to show it is selected.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
     <br>
@@ -678,7 +720,7 @@ Test Case Description: Verify the registration functionality of the site
           - The website should display all recipes with the entered title in the search bar
           - If no recipes with the entered title are found, the website should display a “No Results Found” message.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
           <br>
@@ -696,7 +738,7 @@ Test Case Description: Verify the registration functionality of the site
         - Expected Result:
           - The user should be redirected to the recipe details page
           - The recipe details page should display the recipe's rating, ingredients, instructions, serving size, cooking time and other related information.
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
           <br>
@@ -717,7 +759,7 @@ Test Case Description: Verify the registration functionality of the site
           - A list of saved recipes should be displayed, including the recipe title, image, and date added.
           - Each recipe in the list should be clickable and redirect to the recipe details page, displaying the rating, ingredients, instructions, serving size, and cooking time.
 
-        - Result: PASS
+        - Result:  Pass ✅
 
     <br>
           <br>
@@ -738,7 +780,7 @@ Test Case Description: Verify the registration functionality of the site
           - The selected recipe should be removed from the list of recipes
           - A confirmation message should be displayed to the user indicating that the recipe has been successfully deleted
 
-        - Result: PASS
+        - Result:  Pass ✅
 
       <br>
       <br>
@@ -761,7 +803,7 @@ Test Case Description: Verify the registration functionality of the site
           - The selected recipe should be updated with the new details
             A confirmation message should be displayed to the user indicating that the recipe has been successfully updated
 
-        - Result: PASS
+        - Result:  Pass ✅
 
       <br>
       <br>
@@ -784,7 +826,7 @@ Test Case Description: Verify the registration functionality of the site
           - The selected image should be uploaded and associated with the recipe
           - The user should be redirected to the recipe details page and see the uploaded image along with all the recipe details including rating, ingredients, instructions, serving size, cooking time.
 
-        - Result:
+        - Result:   Pass ✅
 
     <br>
     <br>
