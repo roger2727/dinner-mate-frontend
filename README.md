@@ -23,7 +23,6 @@ link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-s
 - [**References**](#references)
 
 <br>
-<br>
 
 # **General Information**
 
