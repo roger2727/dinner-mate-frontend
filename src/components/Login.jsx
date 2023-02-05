@@ -89,7 +89,6 @@ const MainContainer = styled.form`
     width: 30vw;
     background: linear-gradient(35deg, #494949, #313131);
     border-radius: 10px;
-    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.37);
     color: #ffffff;
 `;
 
@@ -109,7 +108,7 @@ const InputContainer = styled.div`
 const StyledInput = styled.input`
     background: rgba(255,255,255,0.15);
     box-shadow: 0 8px 32 px 0 rgba(31, 38, 135, 0.375)
-    width: 80%;
+    width: 100%;
     height: 3rem;
     padding: 1rem;
     border: none;
