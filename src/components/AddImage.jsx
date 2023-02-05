@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import styled from "styled-components";
 
 const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();
-  const [isUploading, setIsUploading] = useState(false);
 
   const navigate = useNavigate();
   let { recipeId } = useParams();
@@ -17,7 +16,6 @@ const AddImage = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     try {
-      setIsUploading(true); // set uploading to true
       if (!localStorage.getItem("token")) return;
       const formData = new FormData();
       formData.append("image", selectedImage);
@@ -37,10 +35,8 @@ const AddImage = () => {
         const error = await response.json();
         console.error(error);
       }
-      setIsUploading(false); // set uploading to false after request is complete
     } catch (err) {
       console.error(err);
-      setIsUploading(false);
     }
   };
 
@@ -59,7 +55,7 @@ const AddImage = () => {
             onChange={handleImageChange}
           />
           <StyledButton className="upload-btn" onClick={handleUpload}>
-            {isUploading ? "Image Uploading..." : "Upload"}
+            Upload
           </StyledButton>
         </UploadBox>
       </DivContainer>
