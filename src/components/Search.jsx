@@ -59,12 +59,13 @@ const FormStyle = styled.form`
   
   @media (max-width: 520px) {
     div {
-      width: 90%;
+      width: 100%;
     }
     
     input {
       font-size: 1.2rem;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 2rem;
+      border-radius: 0.5rem;
     }
     
     svg {
