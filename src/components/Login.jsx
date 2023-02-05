@@ -232,76 +232,76 @@ const HorizontalRule = styled.hr`
 `;
 export default Login;
 
-const Login = () => {
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const navigate = useNavigate();
+// const Login = () => {
+//   //   const [username, setUsername] = useState("");
+//   //   const [password, setPassword] = useState("");
+//   const [formData, setFormData] = useState({
+//     email: "",
+//     password: "",
+//   });
+//   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const { email, password } = formData;
-      const response = await fetch(
-        "https://dinner-mate-backend-production.up.railway.app/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
-      const data = await response.json();
+//   const onSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const { email, password } = formData;
+//       const response = await fetch(
+//         "https://dinner-mate-backend-production.up.railway.app/auth/login",
+//         {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify({ email, password }),
+//         }
+//       );
+//       const data = await response.json();
 
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        navigate("/");
-      } else {
-        console.error("Invalid email or password");
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+//       if (data.token) {
+//         localStorage.setItem("token", data.token);
+//         navigate("/");
+//       } else {
+//         console.error("Invalid email or password");
+//       }
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
 
-  const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+//   const onChange = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
 
-  const { email, password } = formData;
+//   const { email, password } = formData;
 
-  return (
-    <MainContainer onSubmit={onSubmit}>
-      <LoginText htmlFor="email">Log In</LoginText>
-      <InputContainer>
-        <StyledInput
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={onChange}
-          required
-        />
-        <StyledInput
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={onChange}
-          required
-        />
-      </InputContainer>
-      <ButtonContainer>
-        <StyledLogin type="submit">Login</StyledLogin>
-      </ButtonContainer>
-      <HorizontalRule />
-      <SignUp>
-        <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
-      </SignUp>
-    </MainContainer>
-  );
-};
+//   return (
+//     <MainContainer onSubmit={onSubmit}>
+//       <LoginText htmlFor="email">Log In</LoginText>
+//       <InputContainer>
+//         <StyledInput
+//           name="email"
+//           type="email"
+//           placeholder="Email"
+//           value={email}
+//           onChange={onChange}
+//           required
+//         />
+//         <StyledInput
+//           name="password"
+//           type="password"
+//           placeholder="Password"
+//           value={password}
+//           onChange={onChange}
+//           required
+//         />
+//       </InputContainer>
+//       <ButtonContainer>
+//         <StyledLogin type="submit">Login</StyledLogin>
+//       </ButtonContainer>
+//       <HorizontalRule />
+//       <SignUp>
+//         <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
+//       </SignUp>
+//     </MainContainer>
+//   );
+// };
