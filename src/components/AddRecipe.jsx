@@ -107,7 +107,7 @@ const AddRecipe = () => {
       <FormInput
         type="text"
         name="title"
-        placeholder="Name your Conction here..."
+        placeholder="Name your Creation here..."
         value={formData.title}
         onChange={onChange}
         required
@@ -135,6 +135,7 @@ const AddRecipe = () => {
         onChange={onChange}
         required
       >
+        <option value="">Serving Size</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -160,6 +161,7 @@ const AddRecipe = () => {
         max="5"
         type="number"
       >
+        <option value="">Rate Your Creation!</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -174,6 +176,7 @@ const CategoryBtn = styled.button`
   display: flex;
   color: white;
   flex-direction: column;
+  font-size: 1.15rem;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
@@ -185,6 +188,12 @@ const CategoryBtn = styled.button`
   height: 6rem;
   cursor: pointer;
   transform: scale(0.8);
+  @media (max-width: 600px) { 
+    width: 4rem; 
+    height: 4rem; 
+    margin-right: 1rem;
+    font-size: 0.9rem; 
+  }
   &:hover {
     background: linear-gradient(to right, #f27121, #e94057);
     transition: 2s ease-in-out 1s;
@@ -197,10 +206,9 @@ const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #e8e8e8;
+  background-color: white;
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px #888888;
   width: 100%;
   margin: 50px auto;
 `;
@@ -216,9 +224,12 @@ const FormInput = styled.input`
   padding: 10px;
   font-size: 16px;
   color: #333333;
-  border-radius: 5px;
   border: none;
-  box-shadow: 0px 0px 5px #888888;
+  &:focus { 
+    outline: none; border-bottom: 1px solid #888888;
+    transition: border-bottom 2s ease-in-out;
+  }
+
 `;
 
 const FormTextarea = styled.textarea`
@@ -227,10 +238,12 @@ const FormTextarea = styled.textarea`
   padding: 10px;
   font-size: 16px;
   color: #333333;
-  border-radius: 5px;
   border: none;
-  box-shadow: 0px 0px 5px #888888;
   min-height: 100px;
+  &:focus { 
+    outline: none; border-bottom: 1px solid #888888;
+    transition: border-bottom 2s ease-in-out;
+  }
 `;
 
 const FormSelect = styled.select`
@@ -240,9 +253,12 @@ const FormSelect = styled.select`
   padding: 10px;
   font-size: 16px;
   color: #333333;
-  border-radius: 5px;
   border: none;
-  box-shadow: 0px 0px 5px #888888;
+  &:focus { 
+    transition: border-bottom 2s ease-in-out;
+    outline: none; border-bottom: 1px solid #888888;
+
+  }
 `;
 
 const FormButton = styled.button`
@@ -255,123 +271,13 @@ const FormButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   &:hover {
-    background-color: #444444;
+    background: linear-gradient(to right, #f27121, #e94057);
+  }
+  @media (max-width: 600px) {
+    font-size: 1rem;
+    width: 50%;
   }
 `;
 
-// export default AddRecipe;
 
-
-//   return (
-//     <div>
-//       <h1 className="add-title">Add Recipe</h1>
-//       <div className="form-box" style={{backgroundColor: "grey", textAlign: "center", borderRadius: "0.5rem", padding: "1rem"}}>
-//         <form onSubmit={onSubmit}>
-//           <div className="left-half">
-//             <div>
-//               <label htmlFor="title">Title</label>
-//               <input
-//                 className="form-input"
-//                 type="text"
-//                 name="title"
-//                 value={formData.title}
-//                 onChange={onChange}
-//                 required
-//               />
-//             </div>
-//             <div>
-//               <label htmlFor="category">Category</label>
-//               <select
-//                 name="category"
-//                 value={formData.category}
-//                 onChange={onChange}
-//                 required
-//               >
-//                 <option value="">Select a category</option>
-//                 <option value="Dinner">Dinner</option>
-//                 <option value="Breakfast">Breakfast</option>
-//                 <option value="Lunch">Lunch</option>
-//                 <option value="Dessert">Dessert</option>
-//               </select>
-//             </div>
-//             <div>
-//               <label htmlFor="ingredients">Ingredients</label>
-//               <textarea
-//                 name="ingredients"
-//                 value={formData.ingredients.join("\n")}
-//                 onChange={onChange}
-//                 required
-//                 placeholder="Example: 
-//   salt
-//   chciken
-//   salad"
-//               />
-//             </div>
-//             <div>
-//               <label htmlFor="instructions">Instructions</label>
-//               <textarea
-//                 name="instructions"
-//                 value={formData.instructions.join("\n")}
-//                 onChange={onChange}
-//                 required
-//                 placeholder="Example: 
-//   Preheat oven to 350°F.
-//   In a large bowl, combine flour, sugar, and baking powder.
-//   Add in the butter, eggs, and milk. Mix until well combined."
-//               />
-//             </div>
-//           </div>
-//           <div className="right-half">
-//             <div>
-//               <label htmlFor="cookingTime">Cooking Time (minutes)</label>
-//               <input
-//                 className="form-input"
-//                 type="number"
-//                 name="cookingTime"
-//                 value={formData.cookingTime}
-//                 onChange={onChange}
-//                 min="10"
-//                 max="200"
-//                 step="10"
-//                 required
-//               />
-//             </div>
-//             <div>
-//               <label htmlFor="servingSize">Serving Size</label>
-//               <input
-//                 className="form-input"
-//                 type="number"
-//                 name="servingSize"
-//                 value={formData.servingSize}
-//                 onChange={onChange}
-//                 required
-//                 min="1"
-//                 max="10"
-//               />
-//             </div>
-//             <div>
-//               <label htmlFor="rating">Rating (out of 5)</label>
-//               <input
-//                 className="form-input"
-//                 type="number"
-//                 name="rating"
-//                 value={formData.rating}
-//                 onChange={onChange}
-//                 required
-//                 min="1"
-//                 max="5"
-//               />
-//             </div>
-
-//             <div className="submit-button">
-//               <button className="form-btn" type="submit">
-//                 Add Recipe
-//               </button>
-//             </div>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
 export default AddRecipe;
