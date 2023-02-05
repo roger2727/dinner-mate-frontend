@@ -9,6 +9,9 @@ const Search = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (!input) {
+      return;
+    }
     navigate(`/search-title/${input}`);
   };
 
@@ -56,18 +59,18 @@ const FormStyle = styled.form`
     color: white;
     z-index: 10;
   }
-  
+
   @media (max-width: 520px) {
     div {
       width: 100%;
     }
-    
+
     input {
       font-size: 1.2rem;
       padding: 0.5rem 2rem;
       border-radius: 0.5rem;
     }
-    
+
     svg {
       transform: translate(95%, -50%);
     }
