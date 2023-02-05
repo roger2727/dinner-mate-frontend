@@ -102,7 +102,8 @@ const SLink = styled(Link)`
 
 const Logo = styled(Link)`
   text-decoration: none;
-  font-size: 1.5rem;
+  font-family: 'Lobster', cursive;
+  font-size: 1rem;
   font-weight: 400;
 `;
 
