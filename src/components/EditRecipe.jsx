@@ -127,7 +127,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const UpdateRecipe = () => {
   const navigate = useNavigate();
@@ -172,13 +172,14 @@ const UpdateRecipe = () => {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
   const [category, setCategory] = useState("");
 
   const handleCategorySelection = (selectedCategory) => {
     setCategory(selectedCategory);
     setRecipe({ ...recipe, category: selectedCategory });
-  }
+  };
+
   //form fields
   return (
     <>
@@ -259,12 +260,12 @@ const UpdateRecipe = () => {
           </FormSelect>
         </label>
         <FormButton type="submit" onClick={handleUpdate}>
-        Update
+          Update
         </FormButton>
       </FormContainer>
     </>
-  )
-}
+  );
+};
 
 const FormContainer = styled.form`
   display: flex;
@@ -289,11 +290,11 @@ const FormInput = styled.input`
   font-size: 16px;
   color: #333333;
   border: none;
-  &:focus { 
-    outline: none; border-bottom: 1px solid #888888;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #888888;
     transition: border-bottom 2s ease-in-out;
   }
-
 `;
 
 const FormTextarea = styled.textarea`
@@ -304,8 +305,9 @@ const FormTextarea = styled.textarea`
   color: #333333;
   border: none;
   min-height: 100px;
-  &:focus { 
-    outline: none; border-bottom: 1px solid #888888;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #888888;
     transition: border-bottom 2s ease-in-out;
   }
 `;
@@ -318,10 +320,10 @@ const FormSelect = styled.select`
   font-size: 16px;
   color: #333333;
   border: none;
-  &:focus { 
+  &:focus {
     transition: border-bottom 2s ease-in-out;
-    outline: none; border-bottom: 1px solid #888888;
-
+    outline: none;
+    border-bottom: 1px solid #888888;
   }
 `;
 
@@ -343,4 +345,4 @@ const FormButton = styled.button`
   }
 `;
 
-export default UpdateRecipe
+export default UpdateRecipe;
