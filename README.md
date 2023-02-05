@@ -43,7 +43,7 @@ link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-s
 
   The target audience for this app would be busy working professionals, food enthusiasts and families. These groups of people have different needs but they all share a common goal, which is to make meal planning and recipe discovery easy and efficient.
 
-  Busy working professionals often have limited time to plan and prepare meals, and they would benefit greatly from an app that allows them to easily find and save recipes, and plan their meals in advance. This app's search and filter functionality and meal planning capabilities would be especially useful for this group, as they could quickly find recipes that fit their dietary restrictions and schedule.
+  Busy working professionals often have limited time to plan and prepare meals, and they would benefit greatly from an app that allows them to easily find and save recipes, and plan their meals in advance. This app's search and filter functionality and meal planning capabilities would be especially useful for this group, ass they could quickly find recipes that fit their dietary restrictions and schedule.
 
   Food enthusiasts are always looking to discover new and exciting recipes, and this app would be a great resource for them. The app's search and filter functionality would allow them to find new recipes based on their interests, and the ability to save and organize their favorite recipes would make it easy for them to try out new recipes in the future.
 
