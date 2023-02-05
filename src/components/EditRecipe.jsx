@@ -186,75 +186,79 @@ const UpdateRecipe = () => {
       <Navbar />
       <FormContainer onSubmit={handleUpdate}>
         <FormTitle>Make Some Changes</FormTitle>
-        <div style={{ display: "flex" }}>
-          <CategoryBtn
-            selected={category === "Breakfast"}
-            onClick={() => handleCategorySelection("Breakfast")}
+        <label>
+          Category:
+          <FormSelect
+            type="text"
+            value={recipe.category}
+            onChange={(event) =>
+              setRecipe({ ...recipe, category: event.target.value })
+            }
           >
-            Breakfast
-          </CategoryBtn>
-          <CategoryBtn
-            selected={category === "Lunch"}
-            onClick={() => handleCategorySelection("Lunch")}
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Dessert">Dessert</option>
+          </FormSelect>
+        </label>
+        <label> 
+          Name
+          <FormInput
+            type="text"
+            value={recipe.title}
+            onChange={(event) =>
+              setRecipe({ ...recipe, title: event.target.value })
+            }
+          />
+        </label>
+        <label>
+          Ingredients
+          <FormTextarea
+            value={recipe.ingredients}
+            onChange={(event) =>
+              setRecipe({ ...recipe, ingredients: event.target.value })
+            }
+          />
+        </label>
+        <label>
+          Instructions:
+          <FormTextarea
+            value={recipe.instructions}
+            onChange={(event) =>
+              setRecipe({ ...recipe, instructions: event.target.value })
+            }
+          />
+        </label>
+        <label>
+          Cooking Time
+            <FormInput
+              type="number"
+              value={recipe.cookingTime}
+              onChange={(event) =>
+                setRecipe({ ...recipe, cookingTime: event.target.value })
+              }
+            />
+        </label>
+        <label>
+          Serving Size
+          <FormSelect
+            type="number"
+            value={recipe.servingSize}
+            onChange={(event) =>
+              setRecipe({ ...recipe, servingSize: event.target.value })
+            }
           >
-            Lunch
-          </CategoryBtn>
-          <CategoryBtn
-            selected={category === "Dinner"}
-            onClick={() => handleCategorySelection("Dinner")}
-          >
-            Dinner
-          </CategoryBtn>
-          <CategoryBtn
-            selected={category === "Dessert"}
-            onClick={() => handleCategorySelection("Dessert")}
-          >
-            Dessert
-          </CategoryBtn>
-        </div>
-        <FormInput
-          type="text"
-          value={recipe.title}
-          onChange={(event) =>
-            setRecipe({ ...recipe, title: event.target.value })
-          }
-        />
-        <FormTextarea
-          value={recipe.ingredients}
-          onChange={(event) =>
-            setRecipe({ ...recipe, ingredients: event.target.value })
-          }
-        />
-        <FormTextarea
-          value={recipe.instructions}
-          onChange={(event) =>
-            setRecipe({ ...recipe, instructions: event.target.value })
-          }
-        />
-        <FormInput
-          type="number"
-          value={recipe.cookingTime}
-          onChange={(event) =>
-            setRecipe({ ...recipe, cookingTime: event.target.value })
-          }
-        />
-        <FormSelect
-          type="number"
-          value={recipe.servingSize}
-          onChange={(event) =>
-            setRecipe({ ...recipe, servingSize: event.target.value })
-          }
-        >
-          <option value="">Serving Size</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </FormSelect>
+            <option value="">Serving Size</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </FormSelect>
+        </label>
         <FormButton type="submit" onClick={handleUpdate}>
           Update
         </FormButton>
@@ -263,36 +267,6 @@ const UpdateRecipe = () => {
   );
 };
 
-const CategoryBtn = styled.button`
-  display: flex;
-  color: white;
-  flex-direction: column;
-  font-size: 1.15rem;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  margin-right: 2rem;
-  border: none;
-  background: ${({ selected }) =>
-    selected ? "linear-gradient(to right, #f27121, #e94057)" : " #494949"};
-  width: 6rem;
-  height: 6rem;
-  cursor: pointer;
-  transform: scale(0.8);
-  @media (max-width: 600px) {
-    width: 4rem;
-    height: 4rem;
-    margin-right: 1rem;
-    font-size: 0.9rem;
-  }
-  &:hover {
-    background: linear-gradient(to right, #f27121, #e94057);
-    transition: 2s ease-in-out 1s;
-  }
-  &:active {
-    background: linear-gradient(to right, #f27121, #e94057);
-  }
-`;
 const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
