@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Navbar from "./Navbar";
 
 const AddRecipe = () => {
   // this under
@@ -76,100 +77,103 @@ const AddRecipe = () => {
 
 
   return (
-    <FormContainer onSubmit={onSubmit}>
-      <FormTitle>Add your own delight here!</FormTitle>
-      <div style={{ display: "flex" }}>
-        <CategoryBtn
-          selected={category === "Breakfast"}
-          onClick={() => handleCategorySelection("Breakfast")}
+    <>
+      <Navbar />
+      <FormContainer onSubmit={onSubmit}>
+        <FormTitle>Add your own delight here!</FormTitle>
+        <div style={{ display: "flex" }}>
+          <CategoryBtn
+            selected={category === "Breakfast"}
+            onClick={() => handleCategorySelection("Breakfast")}
+          >
+            Breakfast
+          </CategoryBtn>
+          <CategoryBtn
+            selected={category === "Lunch"}
+            onClick={() => handleCategorySelection("Lunch")}
+          >
+            Lunch
+          </CategoryBtn>
+          <CategoryBtn
+            selected={category === "Dinner"}
+            onClick={() => handleCategorySelection("Dinner")}
+          >
+            Dinner
+          </CategoryBtn>
+          <CategoryBtn
+            selected={category === "Dessert"}
+            onClick={() => handleCategorySelection("Dessert")}
+          >
+            Dessert
+          </CategoryBtn>
+        </div>
+        <FormInput
+          type="text"
+          name="title"
+          placeholder="Name your Creation here..."
+          value={formData.title}
+          onChange={onChange}
+          required
+        />
+        <FormTextarea
+          name="ingredients"
+          placeholder="Example: Salt, Chicken, Salad"
+          value={formData.ingredients}
+          onChange={onChange}
+          required
+        />
+        <FormTextarea
+          name="instructions"
+          placeholder="Example:
+                  Preheat oven to 350°F.
+                  In a large bowl, combine flour, sugar, and baking powder.
+                  Add in the butter, eggs, and milk. Mix until well combined."
+          value={formData.instructions}
+          onChange={onChange}
+          required
+        />
+        <FormSelect
+          name="servingSize"
+          value={formData.servingSize}
+          onChange={onChange}
+          required
         >
-          Breakfast
-        </CategoryBtn>
-        <CategoryBtn
-          selected={category === "Lunch"}
-          onClick={() => handleCategorySelection("Lunch")}
+          <option value="">Serving Size</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+        </FormSelect>
+        <FormInput
+          type="number"
+          name="cookingTime"
+          placeholder="Cooking Time (in minutes)"
+          value={formData.cookingTime}
+          onChange={onChange}
+        />
+        <FormSelect
+          name="rating"
+          value={formData.rating}
+          onChange={onChange}
+          required
+          min="1"
+          max="5"
+          type="number"
         >
-          Lunch
-        </CategoryBtn>
-        <CategoryBtn
-          selected={category === "Dinner"}
-          onClick={() => handleCategorySelection("Dinner")}
-        >
-          Dinner
-        </CategoryBtn>
-        <CategoryBtn
-          selected={category === "Dessert"}
-          onClick={() => handleCategorySelection("Dessert")}
-        >
-          Dessert
-        </CategoryBtn>
-      </div>
-      <FormInput
-        type="text"
-        name="title"
-        placeholder="Name your Creation here..."
-        value={formData.title}
-        onChange={onChange}
-        required
-      />
-      <FormTextarea
-        name="ingredients"
-        placeholder="Example: Salt, Chicken, Salad"
-        value={formData.ingredients}
-        onChange={onChange}
-        required
-      />
-      <FormTextarea
-        name="instructions"
-        placeholder="Example:
-                Preheat oven to 350°F.
-                In a large bowl, combine flour, sugar, and baking powder.
-                Add in the butter, eggs, and milk. Mix until well combined."
-        value={formData.instructions}
-        onChange={onChange}
-        required
-      />
-      <FormSelect
-        name="servingSize"
-        value={formData.servingSize}
-        onChange={onChange}
-        required
-      >
-        <option value="">Serving Size</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-      </FormSelect>
-      <FormInput
-        type="number"
-        name="cookingTime"
-        placeholder="Cooking Time (in minutes)"
-        value={formData.cookingTime}
-        onChange={onChange}
-      />
-      <FormSelect
-        name="rating"
-        value={formData.rating}
-        onChange={onChange}
-        required
-        min="1"
-        max="5"
-        type="number"
-      >
-        <option value="">Rate Your Creation!</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </FormSelect>
-      <FormButton type="submit">Add Recipe</FormButton>
-    </FormContainer>
+          <option value="">Rate Your Creation!</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </FormSelect>
+        <FormButton type="submit">Add Recipe</FormButton>
+      </FormContainer>
+    </>  
   );
 };
 const CategoryBtn = styled.button`
