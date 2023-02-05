@@ -125,7 +125,7 @@ link to documentation repo [_here_](https://github.com/roger2727/MitchellRoger_T
 
 - Dale Dahlenburg - [@github.com/daledburg](https://github.com/daledburg)
 
-  - Dale Dahlenburg is responsible for the backend development of the app. He is responsible for developing and maintaining the server-side of the application, including creating and managing the database, handling user authentication and authorization, and implementing the app's API. He is also responsible for ensuring that the app's performance is optimized and that it can handle a large number of users.
+  - Dale Dahlenburg is responsible for the backend development of the app. He is responsible for developing and maintaining the server-side of the application, including creating and managingg the database, handling user authentication and authorization, and implementing the app's API. He is also responsible for ensuring that the app's performance is optimized and that it can handle a large number of users.
     <br>
     <br>
 
