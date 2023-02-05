@@ -34,18 +34,25 @@ const Login = () => {
             body: JSON.stringify({ email, password }),
           }
         );
+  
+        if (response.status === 401) {
+          console.error("Invalid email or password");
+          return;
+        }
+  
         const data = await response.json();
-
+  
         if (data.token) {
           localStorage.setItem("token", data.token);
           navigate("/");
         } else {
-          console.error("Invalid email or password");
+          console.error("An unknown error occurred");
         }
       } catch (err) {
         console.error(err);
       }
     }
+  };
   };
 
   const validate = () => {
