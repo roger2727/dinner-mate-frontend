@@ -61,25 +61,30 @@ const MyRecipes = () => {
         <Navbar />
         <Search />
         <Category />
-        <Grid>
-            {myRecipes.map((recipes) => {
-                return (
-                    <Card 
-                    key={recipes._id}
-                    hover={hover}
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                    >
-                        <Link to={"/recipe/" + recipes._id}>
-                            <img src={recipes.image} alt="" />
-                            <h4>{recipes.title}</h4>
-                        </Link>
-                        <EditButton onClick={() => handleUpdate(recipes._id)} >Edit</EditButton>
-                        <DeleteButton onClick={() => handleDelete(recipes._id)} >Delete</DeleteButton>
-                    </Card>
-                )
-        })}
-        </Grid>
+        {myRecipes.length > 0 ? (
+          <Grid>
+              {myRecipes.map((recipes) => {
+                  return (
+                      <Card 
+                      key={recipes._id}
+                      hover={hover}
+                      onMouseEnter={() => setHover(true)}
+                      onMouseLeave={() => setHover(false)}
+                      >
+                          <Link to={"/recipe/" + recipes._id}>
+                              <img src={recipes.image} alt="" />
+                              <h4>{recipes.title}</h4>
+                          </Link>
+                          <EditButton onClick={() => handleUpdate(recipes._id)} >Edit</EditButton>
+                          <DeleteButton onClick={() => handleDelete(recipes._id)} >Delete</DeleteButton>
+                      </Card>
+                  )
+          })}
+          </Grid>
+        ) : (
+          <h1>Looks like you don't have any recipes, either create one or browse
+          around to find some you like.</h1>
+        )}
       </>
     )
 }
