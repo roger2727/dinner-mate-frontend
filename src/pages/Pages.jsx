@@ -23,8 +23,8 @@ const Pages = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/addrecipe" element={<AddRecipe />} />
-        <Route path="/myrecipes" element={<><Navbar /><MyRecipes /></>} />
-        <Route path="/editrecipe/:recipeId" element={<><Navbar /><EditRecipe /></>} />
+        <Route path="/myrecipes" element={<MyRecipes />} />
+        <Route path="/editrecipe/:recipeId" element={<EditRecipe />} />
         <Route path="add-image/:recipeId" element={<><Navbar /><AddImage /></>} />
         <Route path="search-title/:title" element={<><Navbar /><Searched /></>} />
       </Routes>

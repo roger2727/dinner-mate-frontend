@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();
@@ -40,18 +41,46 @@ const AddImage = () => {
 
   return (
     <>
-      <div>
-        <h2>Thats looking nice, </h2>
-        <div className="upload-box" style={{alignItems: "center", backgroundColor: "light-grey"}}>
+      <Navbar />
+      <DivContainer>
+        <h2>Thats looking nice, now it's time to upload a pic of your creation! </h2>
+        <UploadBox>
           <p>Please upload an image for your recipe!</p>
-          <input className="file" type="file" onChange={handleImageChange} />
-          <button className="upload-btn" onClick={handleUpload}>
+          <StyledInput className="file" type="file" onChange={handleImageChange} />
+          <StyledButton className="upload-btn" onClick={handleUpload}>
             Upload
-          </button>
-        </div>
-      </div>
+          </StyledButton>
+        </UploadBox>
+      </DivContainer>
     </>
   );
 };
+
+
+const DivContainer = styled.div`
+  align-items: center;
+  padding: 20px;
+`;
+
+const UploadBox = styled.div`
+  align-items: center;
+  background-color: #333333;
+
+`;
+
+const StyledInput = styled.input`
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+`;
+const StyledButton = styled.button`
+  padding: 10px 20px;
+  background-color: darkblue;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
 
 export default AddImage;
