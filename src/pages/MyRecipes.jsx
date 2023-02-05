@@ -57,6 +57,7 @@ const MyRecipes = () => {
       <>
         <Navbar />
         <Search />
+        <Category />
         <Grid>
             {myRecipes.map((recipes) => {
                 return (
