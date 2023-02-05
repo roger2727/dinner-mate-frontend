@@ -41,6 +41,7 @@ const AddImage = () => {
   return (
     <>
       <div>
+        <h2>Thats looking nice, </h2>
         <div className="upload-box" style={{alignItems: "center", backgroundColor: "light-grey"}}>
           <p>Please upload an image for your recipe!</p>
           <input className="file" type="file" onChange={handleImageChange} />

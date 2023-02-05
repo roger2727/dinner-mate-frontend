@@ -124,10 +124,9 @@ const AddRecipe = () => {
         />
         <FormTextarea
           name="instructions"
-          placeholder="Example:
-                  Preheat oven to 350°F.
-                  In a large bowl, combine flour, sugar, and baking powder.
-                  Add in the butter, eggs, and milk. Mix until well combined."
+          placeholder="Example: Preheat oven to 350°F.
+          In a large bowl, combine flour, sugar, and baking powder.
+          Add in the butter, eggs, and milk. Mix until well combined."
           value={formData.instructions}
           onChange={onChange}
           required
@@ -185,6 +184,7 @@ const CategoryBtn = styled.button`
   align-items: center;
   border-radius: 50%;
   margin-right: 2rem;
+  margin-bottom: 3rem;
   border: none;
   background: ${({ selected }) =>
     selected ? "linear-gradient(to right, #f27121, #e94057)" : " #494949"};
@@ -229,9 +229,11 @@ const FormInput = styled.input`
   font-size: 16px;
   color: #333333;
   border: none;
+  border-bottom: 1.5px solid #888888;
   &:focus { 
-    outline: none; border-bottom: 1px solid #888888;
-    transition: border-bottom 2s ease-in-out;
+    outline: none; 
+    border-bottom: 1.5px solid #f27121;
+    transition: border-bottom 0.5s ease-in-out;
   }
 
 `;
@@ -244,9 +246,11 @@ const FormTextarea = styled.textarea`
   color: #333333;
   border: none;
   min-height: 100px;
+  border-bottom: 1.5px solid #888888;
   &:focus { 
-    outline: none; border-bottom: 1px solid #888888;
-    transition: border-bottom 2s ease-in-out;
+    outline: none; 
+    border-bottom: 1.5px solid #f27121;
+    transition: border-bottom 0.5s ease-in-out;
   }
 `;
 
@@ -258,9 +262,11 @@ const FormSelect = styled.select`
   font-size: 16px;
   color: #333333;
   border: none;
+  border-bottom: 1px solid #888888;
   &:focus { 
-    transition: border-bottom 2s ease-in-out;
-    outline: none; border-bottom: 1px solid #888888;
+    transition: border-bottom 0.2s ease-in-out;
+    outline: none;
+    border-bottom: 1.5px solid #f27121;
 
   }
 `;
