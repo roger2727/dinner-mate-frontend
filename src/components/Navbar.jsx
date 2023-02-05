@@ -3,6 +3,7 @@ import { GiKnifeFork } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { FaBars } from 'react-icons/fa'
 
 const Navbar = () => {
   const navigate = useNavigate();
