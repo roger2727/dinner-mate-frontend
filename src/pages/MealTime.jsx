@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Rating from "../components/StarRating";
-import "./Recipes.css"
-
 import { Link, useParams } from "react-router-dom";
+import Category from "../components/Category";
+import Navbar from "../components/Navbar";
+import Search from "../components/Search";
 
-// const mealTime = () => {
 
-//     const [mealTime, setMealTime] = useState([])
-//     const { category } = useParams()
-
-//     const getMealTime = async (category) => {
-//         const res = await fetch(`https://dinner-mate-backend-production.up.railway.app/public/${category}`)
-//         const data = await res.json()
-//         setMealTime(data.category)
-//     }
-
-//     useEffect(() => {
-//         getMealTime(category)
-//     },[category])
 
 const MealTime = () => {
   const [mealTime, setMealTime] = useState([]);
@@ -35,7 +22,10 @@ const MealTime = () => {
 
   return (
     <>
-      <h1>{category} Recipes!</h1>
+      <Navbar />
+      <Search />
+      <Category />
+      <h1> {category}</h1>
         <Grid>
           {mealTime.map((recipe) => {
             return (
@@ -43,7 +33,6 @@ const MealTime = () => {
                 <Link to={"/recipe/" + recipe._id}>
                   <img src={recipe.image} alt="" />
                   <h4>{recipe.title}</h4>
-                  <Rating rating={recipe.rating} style={{justifyContent: "center"}}/>
                 </Link>
               </Card>
             );
@@ -55,23 +44,23 @@ const MealTime = () => {
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(3, minmax(20rem, 1fr));
+  grid-template-rows: repeat(3, minmax(20rem, 1fr));
   grid-gap: 3rem;
 `;
 
 const Card = styled.div`
   img {
-    object-fit: contain;
-    width: 20vw;
+    width: 100%;
     border-radius: 2rem;
-    border: 2px solid #234930;
   }
   a {
     text-decoration: none;
   }
   h4 {
-    text-align: left;
+    text-align: center;
     padding: 1rem;
   }
 `;
+
 export default MealTime;

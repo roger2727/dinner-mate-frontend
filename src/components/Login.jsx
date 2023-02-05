@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "/src/public/login-signup.jpg"
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   //   const [username, setUsername] = useState("");
@@ -71,7 +71,7 @@ const Login = () => {
         <StyledLogin type="submit">Login</StyledLogin>
       </ButtonContainer>
       <HorizontalRule />
-      <SignUp>Don't have an account? Sign Up here!</SignUp>
+      <SignUp><Slink to={'/signup'}>Don't have an account? Sign Up here!</Slink></SignUp>
     </MainContainer>
   );
 };
@@ -184,6 +184,10 @@ const StyledLogin = styled.button`
 
 `;
 
+const Slink = styled(Link)`
+    text-decoration: none;
+    color: white;
+`
 const SignUp = styled.h4`
   cursor: pointer;
   color: white;

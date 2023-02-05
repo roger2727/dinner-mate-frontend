@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Rating from "../components/StarRating";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Search from "../components/Search";
+import Category from "../components/Category";
 
 const MyRecipes = () => {
   const [myRecipes, setMyRecipes] = useState([]);
@@ -52,7 +55,8 @@ const MyRecipes = () => {
 
     return (
       <>
-        <h1>My Recipes!</h1>
+        <Navbar />
+        <Search />
         <Grid>
             {myRecipes.map((recipes) => {
                 return (
@@ -60,7 +64,6 @@ const MyRecipes = () => {
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
-                            <Rating rating={recipes.rating} style={{alignItems: "left"}}/>
                         </Link>
                         <button onClick={() => handleUpdate(recipes._id)} >Edit</button>
                         <button onClick={() => handleDelete(recipes._id)} >Delete</button>
@@ -74,7 +77,8 @@ const MyRecipes = () => {
 
 const Grid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(3, minmax(20rem, 1fr));
+    grid-template-rows: repeat(3, minmax(20rem, 1fr));
     grid-gap: 3rem;
 `;
 
