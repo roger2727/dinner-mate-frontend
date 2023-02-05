@@ -29,6 +29,10 @@ const TodayPicks = () => {
             arrows: false,
             pagination: false,
             gap: "5rem",
+            breakpoints: {
+              700: { perPage: 2 },
+              500: { perPage: 1 },
+            },
           }}
         >
           {todayspicks.map((recipe) => {
