@@ -5,12 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
@@ -33,7 +32,7 @@ const Login = () => {
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
-        console.error("Invalid email or password");
+        setError("Invalid email or password");
       }
     } catch (err) {
       console.error(err);
@@ -67,6 +66,11 @@ const Login = () => {
           required
         />
       </InputContainer>
+      {error && (
+        <ErrorContainer>
+          <ErrorMessage>{error}</ErrorMessage>
+        </ErrorContainer>
+      )}
       <ButtonContainer>
         <StyledLogin type="submit">Login</StyledLogin>
       </ButtonContainer>
@@ -203,6 +207,13 @@ const HorizontalRule = styled.hr`
   background-color: #ebd0d0;
   margin: 1.5rem 0 1rem 0;
   backdrop-filter: blur(25px);
+`;
+const ErrorContainer = styled.div`
+  margin-top: 10px;
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
 `;
 
 export default Login;
