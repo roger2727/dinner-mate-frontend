@@ -52,7 +52,7 @@
 
 //   return (
 //     <form className="update-form">
-//       <label>
+//       <FormLabel>
 //         Title:
 //         <input
 //           type="text"
@@ -61,9 +61,9 @@
 //             setRecipe({ ...recipe, title: event.target.value })
 //           }
 //         />
-//       </label>
+//       </FormLabel>
 //       <br />
-//       <label>
+//       <FormLabel>
 //         Ingredients:
 //         <textarea
 //           value={recipe.ingredients}
@@ -71,9 +71,9 @@
 //             setRecipe({ ...recipe, ingredients: event.target.value })
 //           }
 //         />
-//       </label>
+//       </FormLabel>
 //       <br />
-//       <label>
+//       <FormLabel>
 //         Instructions:
 //         <textarea
 //           value={recipe.instructions}
@@ -81,9 +81,9 @@
 //             setRecipe({ ...recipe, instructions: event.target.value })
 //           }
 //         />
-//       </label>
+//       </FormLabel>
 //       <br />
-//       <label>
+//       <FormLabel>
 //         Category:
 //         <input
 //           type="text"
@@ -92,9 +92,9 @@
 //             setRecipe({ ...recipe, category: event.target.value })
 //           }
 //         />
-//       </label>
+//       </FormLabel>
 //       <br />
-//       <label>
+//       <FormLabel>
 //         Cooking Time:
 //         <input
 //           type="number"
@@ -103,9 +103,9 @@
 //             setRecipe({ ...recipe, cookingTime: event.target.value })
 //           }
 //         />
-//       </label>
+//       </FormLabel>
 //       <br />
-//       <label>
+//       <FormLabel>
 //         Serving Size:
 //         <input
 //           type="number"
@@ -114,7 +114,7 @@
 //             setRecipe({ ...recipe, servingSize: event.target.value })
 //           }
 //         />
-//       </label>
+//       </FormLabel>
 //       <br />
 //       <button type="submit" onClick={handleUpdate}>
 //         Update Recipe
@@ -186,7 +186,7 @@ const UpdateRecipe = () => {
       <Navbar />
       <FormContainer onSubmit={handleUpdate}>
         <FormTitle>Make Some Changes</FormTitle>
-        <label>
+        <FormLabel>
           Category:
           <FormSelect
             type="text"
@@ -200,8 +200,8 @@ const UpdateRecipe = () => {
             <option value="Dinner">Dinner</option>
             <option value="Dessert">Dessert</option>
           </FormSelect>
-        </label>
-        <label> 
+        </FormLabel>
+        <FormLabel> 
           Name
           <FormInput
             type="text"
@@ -210,8 +210,8 @@ const UpdateRecipe = () => {
               setRecipe({ ...recipe, title: event.target.value })
             }
           />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           Ingredients
           <FormTextarea
             value={recipe.ingredients}
@@ -219,8 +219,8 @@ const UpdateRecipe = () => {
               setRecipe({ ...recipe, ingredients: event.target.value })
             }
           />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           Instructions:
           <FormTextarea
             value={recipe.instructions}
@@ -228,8 +228,8 @@ const UpdateRecipe = () => {
               setRecipe({ ...recipe, instructions: event.target.value })
             }
           />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           Cooking Time
             <FormInput
               type="number"
@@ -238,8 +238,8 @@ const UpdateRecipe = () => {
                 setRecipe({ ...recipe, cookingTime: event.target.value })
               }
             />
-        </label>
-        <label>
+        </FormLabel>
+        <FormLabel>
           Serving Size
           <FormSelect
             type="number"
@@ -258,7 +258,7 @@ const UpdateRecipe = () => {
             <option value="7">7</option>
             <option value="8">8</option>
           </FormSelect>
-        </label>
+        </FormLabel>
         <FormButton type="submit" onClick={handleUpdate}>
           Update
         </FormButton>
@@ -290,11 +290,13 @@ const FormInput = styled.input`
   font-size: 16px;
   color: #333333;
   border: none;
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid #888888;
-    transition: border-bottom 2s ease-in-out;
+  border-bottom: 1.5px solid #888888;
+  &:focus { 
+    outline: none; 
+    border-bottom: 1.5px solid #f27121;
+    transition: border-bottom 0.5s ease-in-out;
   }
+
 `;
 
 const FormTextarea = styled.textarea`
@@ -305,10 +307,11 @@ const FormTextarea = styled.textarea`
   color: #333333;
   border: none;
   min-height: 100px;
-  &:focus {
-    outline: none;
-    border-bottom: 1px solid #888888;
-    transition: border-bottom 2s ease-in-out;
+  border-bottom: 1.5px solid #888888;
+  &:focus { 
+    outline: none; 
+    border-bottom: 1.5px solid #f27121;
+    transition: border-bottom 0.5s ease-in-out;
   }
 `;
 
@@ -320,10 +323,12 @@ const FormSelect = styled.select`
   font-size: 16px;
   color: #333333;
   border: none;
-  &:focus {
-    transition: border-bottom 2s ease-in-out;
+  border-bottom: 1px solid #888888;
+  &:focus { 
+    transition: border-bottom 0.2s ease-in-out;
     outline: none;
-    border-bottom: 1px solid #888888;
+    border-bottom: 1.5px solid #f27121;
+
   }
 `;
 
@@ -343,6 +348,14 @@ const FormButton = styled.button`
     font-size: 1rem;
     width: 50%;
   }
+`;
+const FormLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 16px;
+  color: #333333;
 `;
 
 export default UpdateRecipe;

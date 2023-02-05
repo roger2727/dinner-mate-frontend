@@ -153,6 +153,8 @@ const AddRecipe = () => {
           placeholder="Cooking Time (in minutes)"
           value={formData.cookingTime}
           onChange={onChange}
+          min="1"
+          max="50"
         />
         <FormSelect
           name="rating"
