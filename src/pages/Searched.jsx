@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Category from "../components/Category";
-import styled from 'styled-components'
+import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 
@@ -31,16 +31,20 @@ const RecipeTitle = () => {
       <Search />
       <Category />
       <Grid>
-        {recipes.map((recipe) => {
-          return (
-            <Card key={recipe._id}>
-              <Link to={"/recipe/" + recipe._id}>
-                <img src={recipe.image} alt={recipe.title} />
-                <h4>{recipe.title}</h4>
-              </Link>
-            </Card>
-          )
-        })}
+        {recipes.length === 0 ? (
+          <div>No recipes found with that name.</div>
+        ) : (
+          recipes.map((recipe) => {
+            return (
+              <Card key={recipe._id}>
+                <Link to={"/recipe/" + recipe._id}>
+                  <img src={recipe.image} alt={recipe.title} />
+                  <h4>{recipe.title}</h4>
+                </Link>
+              </Card>
+            );
+          })
+        )}
       </Grid>
     </>
   );
@@ -55,15 +59,12 @@ const Grid = styled.div`
   @media (max-width: 1500px) {
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   }
-
-
 `;
 
 const Card = styled.div`
   img {
     width: 100%;
     border-radius: 2rem;
-
   }
   a {
     text-decoration: none;
@@ -73,6 +74,5 @@ const Card = styled.div`
     padding: 1rem;
   }
 `;
-
 
 export default RecipeTitle;
