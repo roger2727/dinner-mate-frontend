@@ -56,6 +56,21 @@ const FormStyle = styled.form`
     color: white;
     z-index: 10;
   }
+  
+  @media (max-width: 520px) {
+    div {
+      width: 90%;
+    }
+    
+    input {
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    svg {
+      transform: translate(95%, -50%);
+    }
+  }
 `;
 
 export default Search;
