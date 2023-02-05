@@ -32,7 +32,7 @@ const RecipeTitle = () => {
       <Category />
       <Grid>
         {recipes.length === 0 ? (
-          <div>No recipes found with that name.</div>
+          <h1>No recipes found with that name.</h1>
         ) : (
           recipes.map((recipe) => {
             return (
