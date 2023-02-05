@@ -65,18 +65,15 @@ const MyRecipes = () => {
           <Grid>
               {myRecipes.map((recipes) => {
                   return (
-                      <Card 
-                      key={recipes._id}
-                      hover={hover}
-                      onMouseEnter={() => setHover(true)}
-                      onMouseLeave={() => setHover(false)}
-                      >
+                      <Card key={recipes._id}>
                           <Link to={"/recipe/" + recipes._id}>
                               <img src={recipes.image} alt="" />
                               <h4>{recipes.title}</h4>
                           </Link>
-                          <EditButton onClick={() => handleUpdate(recipes._id)} >Edit</EditButton>
-                          <DeleteButton onClick={() => handleDelete(recipes._id)} >Delete</DeleteButton>
+                          <EditDeleteContainer>
+                            <EditButton onClick={() => handleUpdate(recipes._id)}>Edit</EditButton>
+                            <DeleteButton onClick={() => handleDelete(recipes._id)}>Delete</DeleteButton>
+                          </EditDeleteContainer>
                       </Card>
                   )
           })}
@@ -104,9 +101,9 @@ const Card = styled.div`
     img {
         width: 100%;
         border-radius: 2rem;
-        opacity: ${(props) => (props.hover ? "0.5" : "1")}
+        opacity: 1;
         transition: opacity 0.5s ease-in-out;
-    }
+      }
     a {
         text-decoration: none;
     }
@@ -122,21 +119,31 @@ const Card = styled.div`
     }
 `;
 const EditButton = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  position: relative;
+  justify-content: center;
+  border: none;
+  text-decoration: none;
+  background-color: white;
+  color: red;
+  cursor: pointer;
+  justify-content: space-between;
 `;
 
 const DeleteButton = styled.button`
-  position: absolute;
-  top: 1rem;
-  right: 5rem;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  position: relative;
+  justify-content: center;
+  border: none;
+  text-decoration: none;
+  background-color: white;
+  color: red;
+  justify-content: space-between;
+  cursor: pointer;
 `;
+
+const EditDeleteContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
 
 export default MyRecipes;
