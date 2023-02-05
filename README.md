@@ -37,7 +37,7 @@ link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-s
 
   The app also allows users to plan their meals for the week by filtering recipes based on specific ingredients or dietary restrictions. This feature makes it easy to plan out a week's worth of meals and ensure that you have all the ingredients on hand. Users can also view a random selection of the top-rated recipes on the homepage, which gives them the opportunity to discover new and exciting recipes.
 
-  The app's CRUD functionality allows users to add, view, update and delete their own personal recipe collection. This feature ensures that users have full control over their recipe collection and can easily update, add or delete recipes as needed. Users can also rate and comment on recipes, and get feedback and suggestions from other users.
+  The app's cCRUD functionality allows users to add, view, update and delete their own personal recipe collection. This feature ensures that users have full control over their recipe collection and can easily update, add or delete recipes as needed. Users can also rate and comment on recipes, and get feedback and suggestions from other users.
 
 - **Target audience**
 
