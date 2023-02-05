@@ -14,10 +14,13 @@ const Login = () => {
     password: "",
   });
   const [isValid, setIsValid] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setShowErrors(true);
+    validate();
     if (isValid) {
       try {
         const { email, password } = formData;
@@ -72,7 +75,6 @@ const Login = () => {
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    validate();
   };
 
   const { email, password } = formData;
@@ -99,6 +101,7 @@ const Login = () => {
         {error.password !== "" && <ErrorMessage>{error.password}</ErrorMessage>}
       </InputContainer>
       <StyledLogin type="submit">Log In</StyledLogin>
+      <HorizontalRule />
       <Slink to="/register">Don't have an account? Register here</Slink>
     </MainContainer>
   );
