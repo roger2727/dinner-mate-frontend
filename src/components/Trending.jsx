@@ -29,6 +29,10 @@ const Trending = () => {
             arrows: false,
             pagination: false,
             gap: "2rem",
+            breakpoints: {
+              700: { perPage: 2 },
+              500: { perPage: 1 },
+            },
           }}
         >
           {trending.map((recipe) => {
