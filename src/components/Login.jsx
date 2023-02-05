@@ -80,7 +80,7 @@ const Login = () => {
   const { email, password } = formData;
 
   return (
-    <MainContainer onSubmit={onSubmit}>
+    <MainContainer onSubmit={handleSubmit}>
       <LoginText htmlFor="email">Log In</LoginText>
       <InputContainer>
         <StyledInput
@@ -90,7 +90,7 @@ const Login = () => {
           onChange={onChange}
           placeholder="Email"
         />
-        {error.email !== "" && <ErrorMessage>{error.email}</ErrorMessage>}
+        {error.email !== "" && <errorMessage>{error.email}</errorMessage>}
         <StyledInput
           name="password"
           type="password"
@@ -98,7 +98,7 @@ const Login = () => {
           onChange={onChange}
           placeholder="Password"
         />
-        {error.password !== "" && <ErrorMessage>{error.password}</ErrorMessage>}
+        {error.password !== "" && <errorMessage>{error.password}</errorMessage>}
       </InputContainer>
       <StyledLogin type="submit">Log In</StyledLogin>
       <HorizontalRule />
