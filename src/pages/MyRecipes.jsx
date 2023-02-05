@@ -10,6 +10,8 @@ const MyRecipes = () => {
   const [myRecipes, setMyRecipes] = useState([]);
   const { userId } = useParams();
   const [currentUserId, setCurrentUserId] = useState("");
+  const [hover, setHover] = useState(false)
+
   const navigate = useNavigate()
 
   const getMyRecipes = async () => {
@@ -53,6 +55,7 @@ const MyRecipes = () => {
     }
   }
 
+
     return (
       <>
         <Navbar />
@@ -61,13 +64,18 @@ const MyRecipes = () => {
         <Grid>
             {myRecipes.map((recipes) => {
                 return (
-                    <Card key={recipes._id}>
+                    <Card 
+                    key={recipes._id}
+                    hover={hover}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                    >
                         <Link to={"/recipe/" + recipes._id}>
                             <img src={recipes.image} alt="" />
                             <h4>{recipes.title}</h4>
                         </Link>
-                        <button onClick={() => handleUpdate(recipes._id)} >Edit</button>
-                        <button onClick={() => handleDelete(recipes._id)} >Delete</button>
+                        <EditButton onClick={() => handleUpdate(recipes._id)} >Edit</EditButton>
+                        <DeleteButton onClick={() => handleDelete(recipes._id)} >Delete</DeleteButton>
                     </Card>
                 )
         })}
@@ -87,6 +95,8 @@ const Card = styled.div`
     img {
         width: 100%;
         border-radius: 2rem;
+        opacity: ${(props) => (props.hover ? "0.5" : "1")}
+        transition: opacity 0.5s ease-in-out;
     }
     a {
         text-decoration: none;
@@ -101,6 +111,23 @@ const Card = styled.div`
         padding: 0.5rem;
         margin: 0.5rem;
     }
+`;
+const EditButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+`;
+
+const DeleteButton = styled.button`
+  position: absolute;
+  top: 1rem;
+  right: 5rem;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
 `;
 
 export default MyRecipes;
