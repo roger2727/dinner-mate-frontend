@@ -47,6 +47,9 @@ const Grid = styled.div`
   grid-template-columns: repeat(3, minmax(20rem, 1fr));
   grid-template-rows: repeat(3, minmax(20rem, 1fr));
   grid-gap: 3rem;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
 `;
 
 const Card = styled.div`
