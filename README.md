@@ -792,7 +792,7 @@ Test Case Description: Verify the registration functionality of the site
 
 # **References**
 
-- Atlassian. (n.d.). K anban Method. Retrieved from https://www.atlassian.com/agile/kanban
+- Atlassian. (n.d.). Kanban Method. Retrieved from https://www.atlassian.com/agile/kanban
 - Atlassian. (n.d.). Agile Methodology. Retrieved from https://www.atlassian.com/agile
 - Lucidchart. (n.d.). How to draw architectural diagrams. Retrieved from https://www.lucidchart.com/blog/how-to-draw-architectural-diagrams
 
