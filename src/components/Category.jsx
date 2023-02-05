@@ -33,6 +33,10 @@ const List = styled.div`
     display: flex;
     justify-content: center;
     margin: 2rem 0rem;
+    @media (max-width: 576px) {
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
 `;
 
 const Slink = styled(NavLink)`
@@ -48,6 +52,11 @@ const Slink = styled(NavLink)`
   height: 6rem;
   cursor: pointer;
   transform: scale(0.8);
+  @media (max-width: 576px) {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+  }
 
   &:hover {
     background: linear-gradient(to right, #f27121, #e94057);
@@ -57,11 +66,17 @@ const Slink = styled(NavLink)`
   h4 {
     color: white;
     font-size: 0.8rem;
+    @media (max-width: 576px) {
+      font-size: 0.6rem;
+    }
   }
 
   svg {
     color: white;
     font-size: 1.5rem;
+    @media (max-width: 576px) {
+      font-size: 1.2rem;
+    }
   }
 
   &.active {
