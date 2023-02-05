@@ -30,7 +30,7 @@ const AddImage = () => {
         }
       );
       if (response.ok) {
-        navigate(`/add-image/${recipeId}`);
+        navigate(`/myrecipes/`);
       } else {
         const error = await response.json();
         console.error(error);
