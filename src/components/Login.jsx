@@ -17,40 +17,34 @@ const Login = () => {
   const [showErrors, setShowErrors] = useState(false);
   const navigate = useNavigate();
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setShowErrors(true);
-    validate();
-    if (isValid) {
-      try {
-        const { email, password } = formData;
-        const response = await fetch(
-          "https://dinner-mate-backend-production.up.railway.app/auth/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-          }
-        );
+  const [errorMessage, setErrorMessage] = useState(null);
 
-        if (response.status === 401) {
-          console.error("Invalid email or password");
-          return;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setErrorMessage(null);
+    try {
+      const response = await fetch(
+        "https://dinner-mate-backend-production.up.railway.app/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         }
+      );
 
-        const data = await response.json();
-
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          navigate("/");
-        } else {
-          console.error("An unknown error occurred");
-        }
-      } catch (err) {
-        console.error(err);
+      if (!response.ok) {
+        setErrorMessage("Invalid email or password");
+        return;
       }
+
+      const { token } = await response.json();
+      // Handle successful login, for example by storing the token in local storage
+      localStorage.setItem("token", token);
+      // Redirect to protected page
+    } catch (error) {
+      setErrorMessage("An error occurred, please try again later.");
     }
   };
 
