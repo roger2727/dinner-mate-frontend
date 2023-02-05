@@ -14,6 +14,7 @@ const AddRecipe = () => {
 
   const handleAddRecipe = () => {
     setShowButton(false);
+    onSubmit();
   };
   const [formData, setFormData] = useState({
     title: "",
