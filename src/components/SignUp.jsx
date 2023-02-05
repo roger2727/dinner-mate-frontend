@@ -118,7 +118,7 @@ const MainContainer = styled.form`
 `;
 
 const SignUpText = styled.h3`
-  margin: 3rem 0 2rem 0;
+  margin: 3rem 0 5rem 0rem;
   color: white;
 `;
 
@@ -136,6 +136,7 @@ const StyledInput = styled.input`
     box-shadow: 0 8px 32 px 0 rgba(31, 38, 135, 0.375);
     width: 80%;
     border-radius: 1rem;
+    margin-bottom: 1.15rem;
     height: 3rem;
     padding: 1rem;
     border: none;
@@ -168,6 +169,7 @@ const StyledSignup = styled.button`
     background: #f27121;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+    margin-top: 2rem;
     width: 50%;
     height: 3rem;
     color: white;

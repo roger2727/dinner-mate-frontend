@@ -181,6 +181,7 @@ const StyledLogin = styled.button`
     cursor: pointer;
     border-radius: 2rem;
     border: none;
+    margin-top: 2rem;
 
 `;
 
