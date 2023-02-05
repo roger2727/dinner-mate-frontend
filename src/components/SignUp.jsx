@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -11,13 +11,14 @@ const SignUp = () => {
 
   const navigate = useNavigate();
 
+  const [message, setMessage] = useState("");
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const newUser = { email, username, password };
-      await fetch(
+      const response = await fetch(
         "https://dinner-mate-backend-production.up.railway.app/auth/register",
-
         {
           method: "POST",
           headers: {
@@ -26,7 +27,11 @@ const SignUp = () => {
           body: JSON.stringify(newUser),
         }
       );
-      navigate("/login");
+      if (response.ok) {
+        navigate("/login");
+      } else {
+        setMessage("Sign up failed. please enter correct details.");
+      }
     } catch (err) {
       console.error(err);
     }
@@ -58,8 +63,11 @@ const SignUp = () => {
       <ButtonContainer>
         <StyledSignup type="submit">Sign Up</StyledSignup>
       </ButtonContainer>
+      {message && <Message>{message}</Message>}
       <HorizontalRule />
-      <LogIn><Slink to={'/login'}>Already have an account? Login here!</Slink></LogIn>
+      <LogIn>
+        <Slink to={"/login"}>Already have an account? Login here!</Slink>
+      </LogIn>
     </MainContainer>
   );
 };
@@ -132,30 +140,30 @@ const InputContainer = styled.div`
 `;
 
 const StyledInput = styled.input`
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 8px 32 px 0 rgba(31, 38, 135, 0.375);
-    width: 80%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32 px 0 rgba(31, 38, 135, 0.375);
+  width: 80%;
+  border-radius: 1rem;
+  margin-bottom: 1.15rem;
+  height: 3rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  &:focus {
+    display: inline-block;
+    box-shadow: 0 0rem 0 0.1rem #f27121;
+    backdrop-filter: blur(12rem);
     border-radius: 1rem;
-    margin-bottom: 1.15rem;
-    height: 3rem;
-    padding: 1rem;
-    border: none;
-    outline: none;
-    &:focus {
-      display: inline-block;
-      box-shadow: 0 0rem 0 0.1rem #f27121;
-      backdrop-filter: blur(12rem);
-      border-radius: 1rem;
-    }
-    &::placeholder {
-      color: white;
-    }
+  }
+  &::placeholder {
+    color: white;
+  }
 `;
 
 const Slink = styled(Link)`
-    text-decoration: none;
-    color: white;
-`
+  text-decoration: none;
+  color: white;
+`;
 
 const ButtonContainer = styled.div`
   margin: 1rem 0 2rem 0;
@@ -166,17 +174,16 @@ const ButtonContainer = styled.div`
 `;
 
 const StyledSignup = styled.button`
-    background: #f27121;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    margin-top: 2rem;
-    width: 50%;
-    height: 3rem;
-    color: white;
-    cursor: pointer;
-    border-radius: 2rem;
-    border: none;
-
+  background: #f27121;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  margin-top: 2rem;
+  width: 50%;
+  height: 3rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 2rem;
+  border: none;
 `;
 
 const LogIn = styled.h4`
@@ -193,6 +200,12 @@ const HorizontalRule = styled.hr`
   background-color: #ebd0d0;
   margin: 1.5rem 0 1rem 0;
   backdrop-filter: blur(25px);
+`;
+const Message = styled.p`
+  color: red;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
 `;
 
 export default SignUp;
