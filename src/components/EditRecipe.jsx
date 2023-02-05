@@ -127,7 +127,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const UpdateRecipe = () => {
   const navigate = useNavigate();
@@ -154,8 +154,8 @@ const UpdateRecipe = () => {
     getRecipe();
   }, [recipeId]);
 
-  const handleUpdate = async (event) => {
-    event.preventDefault();
+  const handleUpdate = async (e) => {
+    e.preventDefault();
     try {
       await fetch(
         `https://dinner-mate-backend-production.up.railway.app/recipes/update/${recipeId}`,
@@ -172,95 +172,67 @@ const UpdateRecipe = () => {
     } catch (err) {
       console.error(err);
     }
-  }
-  const [category, setCategory] = useState("");
+  };
 
-  const handleCategorySelection = (selectedCategory) => {
-    setCategory(selectedCategory);
-    setRecipe({ ...recipe, category: selectedCategory });
-  }
-  //form fields
   return (
-    <>
+    <div>
       <Navbar />
-      <FormContainer onSubmit={handleUpdate}>
-        <FormTitle>Make Some Changes</FormTitle>
-        <div style={{ display: 'flex' }}>
-          <CategoryBtn
-            selected={category === "Breakfast"}
-            onClick={() => handleCategorySelection("Breakfast")}
-          >
-            Breakfast
-          </CategoryBtn>
-          <CategoryBtn
-            selected={category === "Lunch"}
-            onClick={() => handleCategorySelection("Lunch")}
-          >
-            Lunch
-          </CategoryBtn>
-          <CategoryBtn
-            selected={category === "Dinner"}
-            onClick={() => handleCategorySelection("Dinner")}
-          >
-            Dinner
-          </CategoryBtn>
-          <CategoryBtn
-            selected={category === "Dessert"}
-            onClick={() => handleCategorySelection("Dessert")}
-          >
-            Dessert
-          </CategoryBtn>
-        </div>
-        <FormInput
-          type="text"
-          value={recipe.title}
-          onChange={(event) =>
-            setRecipe({ ...recipe, title: event.target.value })
-          }
-        />
-        <FormTextarea
-          value={recipe.ingredients}
-          onChange={(event) =>
-            setRecipe({ ...recipe, ingredients: event.target.value })
-          }
-        />
-        <FormTextarea
-          value={recipe.instructions}
-          onChange={(event) =>
-            setRecipe({ ...recipe, instructions: event.target.value })
-          }
-        />
-        <FormInput
-          type="number"
-          value={recipe.cookingTime}
-          onChange={(event) =>
-            setRecipe({ ...recipe, cookingTime: event.target.value })
-          }
-        />
-        <FormSelect
-          type="number"
-          value={recipe.servingSize}
-          onChange={(event) =>
-            setRecipe({ ...recipe, servingSize: event.target.value })
-          }
-        >
-          <option value="">Serving Size</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </FormSelect>
-        <FormButton type="submit" onClick={handleUpdate}>
-        Update
-        </FormButton>
-      </FormContainer>
-    </>
-  )
-}
+      <StyledForm onSubmit={handleUpdate}>
+        <h2>Edit Recipe</h2>
+        <StyledLabel>
+          Title:
+          <StyledInput
+            type="text"
+            value={recipe.title}
+            onChange={(event) =>
+              setRecipe({ ...recipe, title: event.target.value })
+            }
+          />
+        </StyledLabel>
+        <StyledLabel>
+          Ingredients:
+          <StyledTextarea
+            value={recipe.ingredients}
+            onChange={(event) =>
+              setRecipe({ ...recipe, ingredients: event.target.value })
+            }
+          />
+        </StyledLabel>
+        <StyledLabel>
+          Instructions:
+          <StyledTextarea
+            value={recipe.instructions}
+            onChange={(event) =>
+              setRecipe({ ...recipe, instructions: event.target.value })
+            }
+          />
+        </StyledLabel>
+        <StyledLabel>
+          Category:
+          <StyledInput
+            type="text"
+            value={recipe.category}
+            onChange={(event) =>
+              setRecipe({ ...recipe, category: event.target.value })
+            }
+          />
+        </StyledLabel>
+        <StyledLabel>
+          Cooking Time:
+          <StyledInput
+            type="number"
+            minutes
+            value={recipe.cookingTime}
+            onChange={(event) =>
+              setRecipe({ ...recipe, cookingTime: event.target.value })
+            }
+          />
+        </StyledLabel>
+        <StyledButton type="submit">Update Recipe</StyledButton>
+      </StyledForm>
+    </div>
+  );
+};
 
 const CategoryBtn = styled.button`
   display: flex;
@@ -278,11 +250,11 @@ const CategoryBtn = styled.button`
   height: 6rem;
   cursor: pointer;
   transform: scale(0.8);
-  @media (max-width: 600px) { 
-    width: 4rem; 
-    height: 4rem; 
+  @media (max-width: 600px) {
+    width: 4rem;
+    height: 4rem;
     margin-right: 1rem;
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
   }
   &:hover {
     background: linear-gradient(to right, #f27121, #e94057);
@@ -315,11 +287,11 @@ const FormInput = styled.input`
   font-size: 16px;
   color: #333333;
   border: none;
-  &:focus { 
-    outline: none; border-bottom: 1px solid #888888;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #888888;
     transition: border-bottom 2s ease-in-out;
   }
-
 `;
 
 const FormTextarea = styled.textarea`
@@ -330,8 +302,9 @@ const FormTextarea = styled.textarea`
   color: #333333;
   border: none;
   min-height: 100px;
-  &:focus { 
-    outline: none; border-bottom: 1px solid #888888;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #888888;
     transition: border-bottom 2s ease-in-out;
   }
 `;
@@ -344,10 +317,10 @@ const FormSelect = styled.select`
   font-size: 16px;
   color: #333333;
   border: none;
-  &:focus { 
+  &:focus {
     transition: border-bottom 2s ease-in-out;
-    outline: none; border-bottom: 1px solid #888888;
-
+    outline: none;
+    border-bottom: 1px solid #888888;
   }
 `;
 
@@ -369,4 +342,4 @@ const FormButton = styled.button`
   }
 `;
 
-export default UpdateRecipe
+export default UpdateRecipe;
