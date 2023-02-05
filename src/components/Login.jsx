@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Login = () => {
   //   const [username, setUsername] = useState("");
@@ -71,7 +71,9 @@ const Login = () => {
         <StyledLogin type="submit">Login</StyledLogin>
       </ButtonContainer>
       <HorizontalRule />
-      <SignUp><Slink to={'/signup'}>Don't have an account? Sign Up here!</Slink></SignUp>
+      <SignUp>
+        <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
+      </SignUp>
     </MainContainer>
   );
 };
@@ -144,23 +146,23 @@ const InputContainer = styled.div`
 `;
 
 const StyledInput = styled.input`
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 8px 32 px 0 rgba(31, 38, 135, 0.375);
-    width: 80%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32 px 0 rgba(31, 38, 135, 0.375);
+  width: 80%;
+  border-radius: 1rem;
+  height: 3rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  &:focus {
+    display: inline-block;
+    box-shadow: 0 0rem 0 0.1rem #f27121;
+    backdrop-filter: blur(12rem);
     border-radius: 1rem;
-    height: 3rem;
-    padding: 1rem;
-    border: none;
-    outline: none;
-    &:focus {
-      display: inline-block;
-      box-shadow: 0 0rem 0 0.1rem #f27121;
-      backdrop-filter: blur(12rem);
-      border-radius: 1rem;
-    }
-    &::placeholder {
-      color: white;
-    }
+  }
+  &::placeholder {
+    color: white;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -186,9 +188,9 @@ const StyledLogin = styled.button`
 `;
 
 const Slink = styled(Link)`
-    text-decoration: none;
-    color: white;
-`
+  text-decoration: none;
+  color: white;
+`;
 const SignUp = styled.h4`
   cursor: pointer;
   color: white;
