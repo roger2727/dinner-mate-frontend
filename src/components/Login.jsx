@@ -5,151 +5,77 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  //   const [username, setUsername] = useState("");
+  //   const [password, setPassword] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [error, setError] = useState({
-    email: "",
-    password: "",
-  });
-  const [isValid, setIsValid] = useState(false);
   const navigate = useNavigate();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (isValid) {
-      try {
-        const { email, password } = formData;
-        const response = await fetch(
-          "https://dinner-mate-backend-production.up.railway.app/auth/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-          }
-        );
-        const data = await response.json();
-
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          navigate("/");
-        } else {
-          console.error("Invalid email or password");
+    try {
+      const { email, password } = formData;
+      const response = await fetch(
+        "https://dinner-mate-backend-production.up.railway.app/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         }
-      } catch (err) {
-        console.error(err);
+      );
+      const data = await response.json();
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        navigate("/");
+      } else {
+        console.error("Invalid email or password");
       }
+    } catch (err) {
+      console.error(err);
     }
-  };
-
-  const validate = () => {
-    const { email, password } = formData;
-    const emailRegex =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    let isValid = true;
-    const newError = { ...error };
-
-    if (!emailRegex.test(email)) {
-      isValid = false;
-      newError.email = "Email is not valid";
-    } else {
-      newError.email = "";
-    }
-
-    if (password.length < 6) {
-      isValid = false;
-      newError.password = "Password must be at least 6 characters";
-    } else {
-      newError.password = "";
-    }
-
-    setError(newError);
-    setIsValid(isValid);
   };
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    validate();
   };
 
   const { email, password } = formData;
 
-  const Login = () => {
-    //   const [username, setUsername] = useState("");
-    //   const [password, setPassword] = useState("");
-    const [formData, setFormData] = useState({
-      email: "",
-      password: "",
-    });
-    const navigate = useNavigate();
-
-    const onSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const { email, password } = formData;
-        const response = await fetch(
-          "https://dinner-mate-backend-production.up.railway.app/auth/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-          }
-        );
-        const data = await response.json();
-
-        if (data.token) {
-          localStorage.setItem("token", data.token);
-          navigate("/");
-        } else {
-          console.error("Invalid email or password");
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    const onChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const { email, password } = formData;
-
-    return (
-      <MainContainer onSubmit={onSubmit}>
-        <LoginText htmlFor="email">Log In</LoginText>
-        <InputContainer>
-          <StyledInput
-            name="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={onChange}
-            required
-          />
-          <StyledInput
-            name="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={onChange}
-            required
-          />
-        </InputContainer>
-        <ButtonContainer>
-          <StyledLogin type="submit">Login</StyledLogin>
-        </ButtonContainer>
-        <HorizontalRule />
-        <SignUp>
-          <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
-        </SignUp>
-      </MainContainer>
-    );
-  };
+  return (
+    <MainContainer onSubmit={onSubmit}>
+      <LoginText htmlFor="email">Log In</LoginText>
+      <InputContainer>
+        <StyledInput
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={onChange}
+          required
+        />
+        <StyledInput
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={onChange}
+          required
+        />
+      </InputContainer>
+      <ButtonContainer>
+        <StyledLogin type="submit">Login</StyledLogin>
+      </ButtonContainer>
+      <HorizontalRule />
+      <SignUp>
+        <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
+      </SignUp>
+    </MainContainer>
+  );
 };
 
 const MainContainer = styled.form`
@@ -278,4 +204,5 @@ const HorizontalRule = styled.hr`
   margin: 1.5rem 0 1rem 0;
   backdrop-filter: blur(25px);
 `;
+
 export default Login;
