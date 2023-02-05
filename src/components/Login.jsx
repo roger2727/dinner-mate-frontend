@@ -14,37 +14,34 @@ const Login = () => {
     password: "",
   });
   const [isValid, setIsValid] = useState(false);
-  const [showErrors, setShowErrors] = useState(false);
   const navigate = useNavigate();
 
-  const [errorMessage, setErrorMessage] = useState(null);
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (isValid) {
+      try {
+        const { email, password } = formData;
+        const response = await fetch(
+          "https://dinner-mate-backend-production.up.railway.app/auth/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+        const data = await response.json();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setErrorMessage(null);
-    try {
-      const response = await fetch(
-        "https://dinner-mate-backend-production.up.railway.app/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/");
+        } else {
+          console.error("Invalid email or password");
         }
-      );
-
-      if (!response.ok) {
-        setErrorMessage("Invalid email or password");
-        return;
+      } catch (err) {
+        console.error(err);
       }
-
-      const { token } = await response.json();
-      // Handle successful login, for example by storing the token in local storage
-      localStorage.setItem("token", token);
-      // Redirect to protected page
-    } catch (error) {
-      setErrorMessage("An error occurred, please try again later.");
     }
   };
 
@@ -75,36 +72,84 @@ const Login = () => {
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    validate();
   };
 
   const { email, password } = formData;
 
-  return (
-    <MainContainer onSubmit={handleSubmit}>
-      <LoginText htmlFor="email">Log In</LoginText>
-      <InputContainer>
-        <StyledInput
-          name="email"
-          type="email"
-          value={email}
-          onChange={onChange}
-          placeholder="Email"
-        />
-        {error.email !== "" && <errorMessage>{error.email}</errorMessage>}
-        <StyledInput
-          name="password"
-          type="password"
-          value={password}
-          onChange={onChange}
-          placeholder="Password"
-        />
-        {error.password !== "" && <errorMessage>{error.password}</errorMessage>}
-      </InputContainer>
-      <StyledLogin type="submit">Log In</StyledLogin>
-      <HorizontalRule />
-      <Slink to="/register">Don't have an account? Register here</Slink>
-    </MainContainer>
-  );
+  const Login = () => {
+    //   const [username, setUsername] = useState("");
+    //   const [password, setPassword] = useState("");
+    const [formData, setFormData] = useState({
+      email: "",
+      password: "",
+    });
+    const navigate = useNavigate();
+
+    const onSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const { email, password } = formData;
+        const response = await fetch(
+          "https://dinner-mate-backend-production.up.railway.app/auth/login",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          }
+        );
+        const data = await response.json();
+
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          navigate("/");
+        } else {
+          console.error("Invalid email or password");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const onChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const { email, password } = formData;
+
+    return (
+      <MainContainer onSubmit={onSubmit}>
+        <LoginText htmlFor="email">Log In</LoginText>
+        <InputContainer>
+          <StyledInput
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={onChange}
+            required
+          />
+          <StyledInput
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={onChange}
+            required
+          />
+        </InputContainer>
+        <ButtonContainer>
+          <StyledLogin type="submit">Login</StyledLogin>
+        </ButtonContainer>
+        <HorizontalRule />
+        <SignUp>
+          <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
+        </SignUp>
+      </MainContainer>
+    );
+  };
 };
 
 const MainContainer = styled.form`
@@ -234,77 +279,3 @@ const HorizontalRule = styled.hr`
   backdrop-filter: blur(25px);
 `;
 export default Login;
-
-// const Login = () => {
-//   //   const [username, setUsername] = useState("");
-//   //   const [password, setPassword] = useState("");
-//   const [formData, setFormData] = useState({
-//     email: "",
-//     password: "",
-//   });
-//   const navigate = useNavigate();
-
-//   const onSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const { email, password } = formData;
-//       const response = await fetch(
-//         "https://dinner-mate-backend-production.up.railway.app/auth/login",
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({ email, password }),
-//         }
-//       );
-//       const data = await response.json();
-
-//       if (data.token) {
-//         localStorage.setItem("token", data.token);
-//         navigate("/");
-//       } else {
-//         console.error("Invalid email or password");
-//       }
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   const onChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const { email, password } = formData;
-
-//   return (
-//     <MainContainer onSubmit={onSubmit}>
-//       <LoginText htmlFor="email">Log In</LoginText>
-//       <InputContainer>
-//         <StyledInput
-//           name="email"
-//           type="email"
-//           placeholder="Email"
-//           value={email}
-//           onChange={onChange}
-//           required
-//         />
-//         <StyledInput
-//           name="password"
-//           type="password"
-//           placeholder="Password"
-//           value={password}
-//           onChange={onChange}
-//           required
-//         />
-//       </InputContainer>
-//       <ButtonContainer>
-//         <StyledLogin type="submit">Login</StyledLogin>
-//       </ButtonContainer>
-//       <HorizontalRule />
-//       <SignUp>
-//         <Slink to={"/signup"}>Don't have an account? Sign Up here!</Slink>
-//       </SignUp>
-//     </MainContainer>
-//   );
-// };
