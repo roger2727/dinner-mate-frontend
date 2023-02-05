@@ -28,7 +28,7 @@ link to Trello Implementation plan [_here_](https://trello.com/b/cbYkzz9g/full-s
 
 - **Purpose**
 
-  The purpose of this app is to provide a centralised locations for individuals to store and access their favorite recipes in one convenient place. The app allows users to easilyd filter recipes based on specific ingredients or dietary restrictions, making meal planning and recipe discovery more efficient. The user-friendly interface makes it easy to navigate through your recipe collection and plan your meals for the week. With this app, busy working professionals, food enthusiasts, or anyone looking to keep their recipe collection organized, can access their recipes on the go, and never have to worry about losing their favorite recipes again. This app is designed to make meal planninge and recipe discovery a breeze and help you to create delicious and healthy meals.
+  The purpose of this app is to provide a centralised locationss for individuals to store and access their favorite recipes in one convenient place. The app allows users to easilyd filter recipes based on specific ingredients or dietary restrictions, making meal planning and recipe discovery more efficient. The user-friendly interface makes it easy to navigate through your recipe collection and plan your meals for the week. With this app, busy working professionals, food enthusiasts, or anyone looking to keep their recipe collection organized, can access their recipes on the go, and never have to worry about losing their favorite recipes again. This app is designed to make meal planninge and recipe discovery a breeze and help you to create delicious and healthy meals.
 
 - **Functionality / features**
 
