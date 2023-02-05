@@ -51,6 +51,10 @@ const Grid = styled.div`
   grid-template-columns: repeat(3, minmax(20rem, 1fr));
   grid-template-rows: repeat(3, minmax(20rem, 1fr));
   grid-gap: 3rem;
+  overflow: hidden;
+  @media (max-width: 1500px) {
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  }
 
 
 `;
