@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import styled from "styled-components";
 
 const AddImage = () => {
   const [selectedImage, setSelectedImage] = useState();

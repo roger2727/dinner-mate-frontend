@@ -9,19 +9,19 @@ import styled from "styled-components";
 const Category = () => {
   return (
     <List>
-      <Slink to={"mealTime/Breakfast"}>
+      <Slink to={"/mealTime/Breakfast"}>
         <AiOutlineCoffee />
         <h4>Breakfast</h4>
       </Slink>
-      <Slink to={"mealTime/Lunch"}>
+      <Slink to={"/mealTime/Lunch"}>
         <CiPizza />
         <h4>Lunch</h4>
       </Slink>
-      <Slink to={"mealTime/Dinner"}>
+      <Slink to={"/mealTime/Dinner"}>
         <GiChopsticks />
         <h4>Dinner</h4>
       </Slink>
-      <Slink to={"mealTime/Dessert"}>
+      <Slink to={"/mealTime/Dessert"}>
         <BiCake />
         <h4>Dessert</h4>
       </Slink>
